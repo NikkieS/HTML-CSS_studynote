@@ -19,10 +19,26 @@
         }
         div.memo{
             padding: 10px;
-            border : 1px solid black;
-            margin : 10px;
+            border: 1px solid black;
+            margin: 10px;
 
             color: blue;
+        }
+        #imglist{
+            width: 200px;
+            height: 100px;
+            padding: 0;
+
+            /* margin : top-bottom side */
+            margin: 5px; 
+
+            overflow: hidden;
+        }
+        #imglist>img{
+            display: block;
+
+            width: 200px;
+            height: 100px;
         }
     </style>
 
@@ -156,6 +172,7 @@
 
             var btn10 = $('button.btn.insert:eq(0)');
             var btn11 = $('button.btn.insert').eq(1);
+            var btn12 = $('button.btn.insert').eq(2);
 
             // $("태그 이름").html('요소').appendTo('element 이름')
             btn10.click(function(){
@@ -167,14 +184,63 @@
                 let txt = '제목 요소 추가';
                 $('<h3></h3>').html(txt).appendTo(header);
             });
+
+            btn12.click(function(){
+                // $('<img>').appendTo('div.header');
+                // $('<img>').attr('src', '../images/Penguins.jpg').appendTo('div.header');
+                // $('<img>', {
+                //     src : '../images/Penguins.jpg',
+                //     width:100,
+                //     height: 100
+                // }).appendTo('div.header');
+
+                // $('<img>', {
+                //     src : '../images/Penguins.jpg',
+                //     width:100,
+                //     height: 100
+                // }).prependTo('div.header');
+
+                // $('div.header').append($('<img>',{
+                // src : '../images/Penguins.jpg',
+                // width:100,
+                // height: 100
+                // }).insertAfter('div.header'));
+
+                // $('div.header').append($('<img>',{
+                // src : '../images/Penguins.jpg',
+                // width:100,
+                // height: 100
+                // }).insertBefore('div.header'));
+
+                $('div.header').append($('<img>',{
+                src : '../images/Penguins.jpg',
+                width:100,
+                height: 100
+                }), $('<div></div>'));
+            })
+
+            // 슬라이딩 배너 효과
+            setInterval(function(){
+                    $('#imglist>img:first').appendTo('#imglist');
+                }, 3000);
         });
 
     </script>
 </head>
 <body>
 
+    <div id="imglist">
+        <img src="../images/movie_image.jpg">
+        <img src="../images/Desert.png">
+        <img src="../images/Jellyfish.jpg">
+        <img src="../images/Koala.jpg">
+        <img src="../images/Penguins.jpg">
+        <img src="../images/Tulips.jpg">
+    </div>
+
     <button class="btn insert">body tag 요소 추가</button>
     <button class="btn insert">div.header 요소 추가</button>
+    <button class="btn insert"> img 요소 추가</button>
 
     <hr>
     <button class="btn rm">내용 삭제</button>
