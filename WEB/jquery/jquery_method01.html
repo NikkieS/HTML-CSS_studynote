@@ -60,6 +60,22 @@
             btn01.click(function(){
                 img01.attr('src','../images/Jellyfish.jpg');
             });
+
+            btn02.click(function(){
+                $('img').attr('height',function(index){
+                    return (index+1)*100;
+                });
+            });
+
+            btn03.click(function(){
+                $('img:last').attr({
+                    src: '../images/Tulips.jpg',
+                    width: 100,
+                    height: 100,
+                    alt: '변경된 이미지입니다.'
+                });
+                
+            });
         });
 
     </script>
@@ -67,6 +83,8 @@
 <body>
 
     <img src="../images/Koala.jpg" height="200">
+    <img src="../images/Desert.png" height="200">
+    <img src="../images/Penguins.jpg" height="200">
 
     <button class="attr string">String-String</button>
     <button class="attr func">String-Function</button>
