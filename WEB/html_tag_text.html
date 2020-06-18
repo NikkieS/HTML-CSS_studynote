@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            HTML5 문자 테그
+        </title>
+            <meta charset="utf-8">
+            <!--<link> 외부 링크를 가져온다.
+            <style></style> 스타일 편집
+            <script></script>-->
+    </head>    
+    <body>
+        <h1> [Table 태그]</h1>
+        <hr>
+        
+        <h3> 홍차 </h3>
+        <table border="1">
+            <tr>
+                <th colspan="2">지역별 홍차</th>
+            </tr>
+            <tr>
+                <th rowspan="3">중국</th>
+                <td>정산소종</td>
+            </tr>
+            <tr>
+                <td>기문</td>
+            </tr>
+            <tr>
+                <td>운남</td>
+            </tr>
+            <tr>
+                <th rowspan="4">인도 및 스리랑카</th>
+                <td>아삼</td>
+            </tr>
+            <tr>
+                <td>실론</td>
+            </tr>
+            <tr>
+                <td>다즐링</td>
+            </tr>
+            <tr>
+                <td>닐기리</td>
+            </tr>
+        </table>
+        <h3> 시간표 </h3>
+        <table border = "1">
+            <thead>
+                <tr>
+                    <!--굵게 표시-->
+                    <th></th>
+                    <th>월</th>
+                    <th>화</th>
+                    <th>수</th>
+                    <th>목</th>
+                    <th>금</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1교시</td>
+                    <td>JAVA</td>
+                    <td>Oracle</td>
+                    <td>MySQL</td>
+                    <td>Spring</td>
+                    <td>MyBatis</td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td>2교시</td>
+                    <td>HTML5</td>
+                    <td>CSS3</td>
+                    <td>JavaScript</td>
+                    <td>jQuery</td>
+                    <td>Project</td>
+                </tr>
+            </tfoot>
+
+        <table border = "1">
+            <thead>
+                <tr>
+                    <td>1,1</td>
+                    <td>1,2</td>
+                    <td>1,3</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>2,1</td>
+                    <td>2,2</td>
+                    <td>2,3</td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td>3,1</td>
+                    <td>3,2</td>
+                    <td>3,3</td>
+                </tr>
+            </tfoot>
+        </table>
+        
+        
+        <h1> [목록 태그]</h1>
+        <hr>
+        <h2> 리스트 표현, 네비게이션 구현할 때 사용</h2>
+        <h3> 순서가 있는 목록 : ol</h3>
+        <ol>
+            <li>사과</li>
+            <li>바나나</li>
+            <li>오렌지</li>
+        </ol>
+        
+        <h3> 순서가 없는 목록 : ul</h3>
+        <ul>
+            <li>사과</li>
+            <li>바나나</li>
+            <li>오렌지</li>
+        </ul>
+        
+        
+        <h1> [a Tag] </h1>
+        <hr>
+        <h3> 하이퍼 링크 : 특정 웹 페이지 또는 현재 페이지 내부의 특정 위치로 이동 </h3>
+        
+        <a href = "index.html" target="_blank"> index.html </a> <br>
+        <!--포트번호 80 생략 가능 (윈도우 자체 처리)-->
+        <a href = "http://www.naver.com:80"> 네이버</a> <br>
+        <a href = "http://www.shopping.naver.com"> 네이버 쇼핑 </a> <br>
+        <!--target = "_blank" 로 새탭 띄우기-->
+        <a href = "http://www.wikipedia.org"
+           target = "_blank"> 위키피디아</a> <br>
+        <a href = "mailto:rkfka0405@naver.com" > 웹마스터에게 메일보내기 </a> <br>
+        <a href = "tel:070-9999-7777">A/S : </a>
+        
+        
+        <h3> 목차</h3>
+        <a href="#tag01"> 1. href-tag </a> <br>
+        <a href="#tag02"> 2. p-tag </a> <br>
+        <a href="#tag03"> 3. br-tag </a> <br>
+        <a href="#tea"> 4. 홍차 </a> <br>
+        <hr>
+        
+        
+        <h1 id="tag03"> [br Tag] </h1>
+        <h2 id="tea">홍차</h2>
+        <hr>
+        <h3>정의</h3>
+        <p>홍차는 백차, 녹차, 우롱차보다 더 많이 발효된 차의 일종이다. 동양에서는 찻물의 빛이 붉기 때문에 홍차라고 부르지만, 서양에서는 찻잎의 색깔 때문에 'black tea'라고 부른다.</p>
+        <br>
+        <h3>등급</h3>
+        <p>홍차는 여러 가지로 등급이 매겨진다. 일반적으로 찻잎의 모양에 따른 등급과 가공 상태에 따른 등급을 조합하여 표시한다. </p>
+        <p>- 브로큰 페코 </p>
+        <p>- 브로큰 페코 수숑 </p>
+        <p>- 브로큰 오렌지 페코 패닝 </p>
+        <br>
+        
+        
+        <h1 id="tag02"> [p Tag] </h1>
+        <h2>'깜깜이 환자' 벌써 9%…기로에 선 생활 방역</h2>
+        
+        <hr>
+        <p>수도권의 코로나19 지역 감염이 좀처럼 끊어지지 않고 있습니다. <br>
+            감염경로를 알 수 없는 깜깜이 환자 비율도 정부의 생활 방역 전환기준인 5%를 한참 넘은 9%에 이르고 있는데요. <br>
+            이미 지역사회에 확진자가 만연해있는 것은 아닐지 우려되고 있습니다.</p>
+        <p>지난달 이태원 클럽에서 시작된 집단감염이 진정세를 보일 때쯤, 이번엔 부천 물류센터에서 확진자가 속출하며 확산세에 불을 지폈습니다. <br>
+            이후에도 산발적 감염은 이어지고 있습니다. <br>
+            (윤태호 / 중앙사고수습본부 방역총괄반장) "무증상 감염자에 의한 조용한 전파가 산발적으로 진행되고 있을 가능성이 있고 이는 효과적 백신이 개발되기 전까지는 지속할 확률이 매우 높습니다." <br>
+            더 큰 문제는 감염경로를 알 수 없는 확진자가 늘고 있다는 점입니다.
+            이 비율은 최근 2주간 9%에 육박합니다.</p>
+        <hr>
+        
+        
+        <h1 id="tag01"> [제목 Tag] </h1>
+        <hr>
+        <h1>h1 : 가장 큰 사이즈 (32px, bold) </h1>
+        <h2>h2 : (24px, bold) </h2>
+        <h3>h3 : (18.72px, bold) </h3>
+        <h4>h4 : 기본 사이즈 (16px, bold)</h4>
+        <h5>h5</h5>
+        <h6>h6</h6>
+    </body>
+</html>

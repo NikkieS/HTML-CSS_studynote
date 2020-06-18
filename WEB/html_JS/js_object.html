@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+        var obj = {};  // 기본 객체 생성 new Object()
+        
+        console.log(typeof(obj));
+
+        var obj = {
+            number:1000,
+            str:'String',
+            check:false,
+            method:function(){},
+            object: {},
+            arr:[1,2,3]
+        };
+
+        console.log(obj.number);
+        console.log(obj);
+
+
+        var person = {
+            name:'손흥민',
+            age:27,
+            hello:function(){
+                alert('안녕하세요. 저는 '+ this.name + '입니다.');
+                alert(this.age + '세 입니다.');
+                this.bye();
+            },
+            bye:function(){
+                alert('bye~!!');
+            }
+        };
+
+        //person.hello();
+
+        //person.job='player';
+
+        //alert(person.job);
+        
+        // 생성자 함수
+        // new 키워드를 이용해서 객체를 생성
+        // 생성자 함수의 이름은 대문자로 시작
+        
+        function Student(uname, kor_score, math_score, eng_score){
+            this.name=uname;
+            this.kor=kor_score;
+            this.math=math_score;
+            this.eng=eng_score;
+
+            // this.getSum = function(){
+            //     return this.kor+this.math+this.eng;
+            // }
+
+            // this.getAvg = function(){
+            //     return this.getSum/3;
+            // }
+        }
+
+        Student.prototype.getSum = function(){
+            return this.kor+this.math+this.eng;
+        }
+
+        Student.prototype.getAge = function(){
+            return this.getSum()/3
+        }
+        // var s1 = new Student();
+
+        var students = [];
+        students.push(new Student('A1', 90, 70, 90));
+        students.push(new Student('A2', 80, 60, 80));
+        students.push(new Student('A3', 70, 50, 70));
+        students.push(new Student('A4', 60, 40, 60));
+        students.push(new Student('A5', 50, 30, 50));
+        students.push(new Student('A6', 40, 20, 40));
+        students.push(new Student('A7', 30, 100, 30));
+        students.push(new Student('A8', 20, 80, 20));
+        students.push(new Student('A9', 10, 90, 100));
+        students.push(new Student('A10', 100, 10, 10));
+
+        var list = '';
+        for(var i=0; i<students.length; i++){
+            list += '<h4> ';
+            list += '이름:'+students[i].name;
+            list += ', 총점:'+students[i].getSum();
+            list += ', 평균:'+students[i].getAvg();
+            list += '</h4>' ;
+        }
+
+        document.write(list);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

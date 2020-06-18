@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+        var round = 0;
+        var check = confirm('게임을 시작하시겠습니까?');
+        while(check){
+            alert('기회는 10회가 주어지며.\n 1~100 사이의 숫자를 맞추시면 됩니다.');
+            alert('10회 이전에 맞추시면 승리.\n 10회가 넘어가면 패배.')
+
+            var num=parseInt(Math.random()*100+1);
+            
+            var ans = prompt('숫자를 입력해주세요');
+            round++;
+
+            if(ans==num && round <=10){
+                alert('맞추셨습니다.');
+                break;
+            }
+        }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

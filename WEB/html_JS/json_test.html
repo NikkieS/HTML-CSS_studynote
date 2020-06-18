@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON 객체</title>
+    <script src="../js/json_test.js">
+        var book = {
+            name: 'java',
+            price: 10000,
+            publisher:'Orange Media'
+        }
+        console.log(book);
+
+        // Javascript Object -> Json (String)
+        var jsondata = JSON.stringify(obj);
+
+        console.log('jasondata type : '+typeof(jsondata));
+
+        window.onload = function(){
+            document.getElementById('json').innerHTML=jsondata;
+
+            // String JSON
+            var newdata = '{"memberid":"cool", "membername" : "COOL", "age": 27, "program":["java", "python", "javascript"]}';
+
+            // JSON(String) -> Javascript Object
+            var newObj = JSON.parse(newdata);
+
+            console.log('newObj type : '+typeof(newObj));
+            console.log(newObj);
+
+            alert()
+        }
+    </script>
+</head>
+<body>
+    <h1></h1>
+</body>
+</html>

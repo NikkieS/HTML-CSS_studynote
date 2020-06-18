@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CSS3 선택자 Selector</title>
+        <meta charset="utf-8">
+        <style>
+            /*속성선택자
+            선택자[속성이름] : 특성속성을 가지는 태그들을 선택
+            ex) input[type]
+            선택자[속성이름=속성값] : 특정속성을 가지며, 속성에 특정 값을 가지는 태그들을 선택
+            ex) input[type=password]*/
+            input{
+                height: 30px;
+                margin: 10px;
+            }
+            input[type]{
+                /*border: 1px solid blue;*/
+            }
+            input[type=text]{
+                /*background-color: aqua;*/
+            }
+            input[type=password]{
+                background-color: aquamarine;
+            }
+            img[alt]{
+                width: 50%;
+            }
+            img[src$=jpg]{
+                border: 3px solid red;
+            }
+            img[src$=png]{
+                border: 3px solid green;
+            }
+            /*후손선택 : 선택의 범위를 제한한다.
+            ex) div h1 {}*/
+            #header h1, #header h2{
+                color: red;
+            }
+            form input{
+                /*width: 100%;*/
+            }
+            /*자손 선택자
+            선택자>선택자
+            ex) div>h1{}*/
+            #header>h1{
+                background-color: aquamarine;
+            }
+            /*#header h1.title{
+                color: red;
+            }
+            #header>h1{
+                color: red;
+            }*/
+            table>tbody>tr>td{
+                color: red;
+            }
+            /*동위 선택자 : 같은 레벨의 태그들을 기준으로 선택
+            + : 바로뒤의 요소 선택
+            ~ : 같은 레벨의 형제 태그들 중 선택*/
+            h3+h4{
+                color: blue;
+            }
+            h3~h4{
+                background-color: antiquewhite;
+            }
+            /*반응 선택자
+            선택자 : hover
+            -> 마우스 커서가 선택된 요소의 영역으로 들어갔을 때
+            선택자 : active
+            -> 마우스 커서는 선택된 요소 위에 존재하고, 왼쪽 버튼 클릭한 상태*/
+            h3{
+                background-color: aqua;
+            }
+            h3:hover{
+                color:red;
+                font-size: 32px;
+            }
+            h3:active{
+                font-style: italic;
+                color: blue;
+            }
+            #myform input{
+                background-color: aliceblue;
+            }
+            #myform input[disabled]{
+                background-color: black;
+            }
+            #viewmenu+div{
+                display: none;
+            }
+            #viewmenu:checked+div{
+                display:block;
+            }
+            #nav{
+                overflow: hidden;
+            }
+            #nav>li{
+                float: left;
+                list-style: none;
+                padding: 5px 15px;
+            }
+            #nav>li:nth-child(2n){
+                background-color: aqua;
+            }
+            #nav>li:nth-child(2n+1){
+                background-color: aquamarine;
+            }
+            #nav>li:first-child{
+                /*border : 1px solid grey;*/
+                border-radius: 10px 0px 0px 10px;
+            }
+            #nav>li:last-child{
+                /*border : 1px solid grey;*/
+                border-radius: 0px 10px 10px 0px;
+            }
+            p::first-letter{font-size: 3em;}
+            p::first-line{
+                color:blueviolet;
+                font-weight: bold;
+            }
+            P::selection{
+                background-color: chartreuse;
+                color: yellow;
+            }
+            a:link{
+                color: cornflowerblue;
+                text-decoration: none;
+                font-weight: bold;
+            }
+            a:hover{
+                /*text-decoration: underline;*/
+            }
+            a:active{
+                color:cornflowerblue;
+            }
+            a:visited{
+                color:cornflowerblue;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Lorem ipsum dolor sit amet</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <p>Aenean ac erat et massa vehicula laoreet consequat et sem.<br> 
+            Aenean ac erat et massa vehicula laoreet consequat et sem.</p>
+
+        
+        
+        <hr>
+        
+        <ul id="nav">
+            <li><a href="link.html">home</a></li>
+            <li><a href="#">company</a></li>
+            <li><a href="#">service</a></li>
+            <li><a href="#">product</a></li>
+            <li><a href="#">notice</a></li>
+            <li><a href="#">contacts</a></li>
+            <li><a href="#">eng</a></li>
+        </ul>
+        <hr>
+        
+        <form id="myform">
+            <div>
+                약관보기 <input type="checkbox" id="viewmenu">
+                <div>
+                    <h4>이용약관</h4>
+                    <p>문제가 생기면 바로 강퇴조치됩니다.</p>
+                </div>
+            </div>
+            
+            <div>
+                약관동의 <input type="checkbox" checked>
+            </div>
+            <div>
+                마케팅동의 <input type="checkbox">
+            </div>
+            <div>
+                <input type="text">
+            </div>
+            <div>
+                <input type="text" disabled>
+            </div>
+            <div>
+                <input type="text" readonly>
+            </div>
+            <div>
+                <input type="text" required> <!--공백을 체크-->
+            </div>
+            
+            <input type="submit">
+            
+        </form>
+        
+        
+        <h3>Header - 3</h3>
+
+        <h4>Header - 4</h4>
+        <h4>Header - 4</h4>
+        <h4>Header - 4</h4>
+        <h5>Header - 5</h5>
+
+        
+        
+        <hr>
+        
+        <table border="1">
+            <tr>
+                <td>아이디</td>
+                <td><input></td>
+            </tr>
+            <tr>
+                <td>비밀번호</td>
+                <td><input></td>
+            </tr>
+        </table>
+        
+        
+        <hr>
+        
+        <div id="header">
+            <h1 class="title">Title</h1>
+            <div id="nav">
+                <h1>Navigation</h1>
+            </div>
+            
+            <h1> etc </h1>
+            <h2> h2 tag </h2>
+        </div>
+        
+        <div id="section">
+            <h1 class="title">Title</h1>
+            <p>안녕하세요</p>
+        </div>
+        
+        <h4>Header - 4</h4>
+        
+        <form></form>
+        
+        <input>
+        <br>
+        <input type="text">
+        <br>
+        <input type="password">
+        <br>
+        
+        <img src="images/Penguins.jpg">
+        <img src="images/Penguins.jpg" alt="펭귄">
+        <img src="images/Desert.png" alt="사막">
+    </body>
+</html>
