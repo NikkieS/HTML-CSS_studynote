@@ -10,6 +10,13 @@
             background-color: black;
             color: cornsilk;
         }
+        button.rmclass, button.attr{
+            padding: 10px;
+            font-size: 1.5em;
+        }
+        img{
+            display: block;
+        }
     </style>
 
     <!-- jQuery lib를 CDN을 통해서 로드 -->
@@ -26,13 +33,49 @@
             $('h1').addClass('font');
 
             $('button.rmclass').click(function(){
-                $('h1').addClass('title');
-            })
+                $('h1').removeClass('title');
+            });
+
+            // 속성을 변경하는 attr() 메소드
+            // getter : attr(속성이름)
+            var imgPath = $('img').attr('src');
+            console.log('imgPath : ' + imgPath);
+
+            // setter:
+            // jQuery.attr(속성이름, 속성값)
+            // jQuery.attr(속성이름, 함수) 함수는 속성에 들어갈 수 있는 데이터
+            // jQuery.attr({}){} 객체 안에는 속성 이름 : 속성값들을 정의
+            var btn01 = $('button.attr.string');
+            var btn02 = $('button.attr.func');
+            var btn03 = $('button.attr.obj');
+            
+            // var img01 = $('img').first;
+            var img01 = $('img:first');
+
+            btn01.css('color','red');
+            btn02.css('color','blue');
+            btn03.css('color','green');
+
+            // string-string
+            btn01.click(function(){
+                img01.attr('src','../images/Jellyfish.jpg');
+            });
         });
 
     </script>
 </head>
 <body>
+
+    <img src="../images/Koala.jpg" height="200">
+
+    <button class="attr string">String-String</button>
+    <button class="attr func">String-Function</button>
+    <button class="attr obj">Object{}</button>
+
+    <hr>
+
     <h1>안녕하세요</h1>
+    <button class="rmclass">Remove Class</button>
+
 </body>
 </html>
