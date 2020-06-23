@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <meta charset="utf-8"/>
+   <title>Kakao 지도 시작하기</title>
+</head>
+<body>
+   <div id="map" style="width:500px;height:400px;"></div>
+   <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=45c1c6e73575c6db6647cdd0e4f140cf
+   "></script>
+   <script>
+      var container = document.getElementById('map'); // 지도를 표시할 div
+      var options = {
+         center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+         level: 3 // 지도의 확대 레벨
+      };
+
+      // 지도를 미리 생성
+      var map = new kakao.maps.Map(container, options);
+      // 주소-좌표 변환 객체를 생성
+   </script>
+<pre>
+   1. 카카오 개발자 사이트 로그인
+   2. 앱 설정
+      javascript appkey  생성
+      플랫폼 설정 -> 웹 http://localhost
+            http://localhost:8080
+      apache web server start
+      httpd -k start
+      Tomcat
+      AWS
+   3. 지도 API 코드 사용
+</pre>
+</body>
+</html>
