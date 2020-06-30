@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>레스토랑 선택 화면</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        #wrap{
+            width: 1024px;
+            height: 786px;
+            margin: 0 auto;
+
+            font-family: 'Nanum Gothic', sans-serif;
+        }
+        #header{
+            width: 919px;
+            height: 214px;
+            margin: 20px auto;
+        }
+        #header img{
+            margin: 50px 350px;
+            height: 200px;
+            width: 250px;
+        }
+        #content{
+            margin: 20px auto;
+            height: 500px;
+        }
+        #content table{
+            margin: 0 auto;
+        }
+        #content button{
+            width: 163px;
+            height: 164px;
+            margin: 20px 50px;
+
+            border: 10px solid dimgray;
+            border-radius: 5px;
+        }
+        #content img{
+            width: 130px;
+            height: 140px;
+        }
+        #footer img{
+            width: 52px;
+            height: 55px;
+        }
+        .left_btn{
+            float: left;
+            margin-right: 240px;
+        }
+        .right_btn{
+            float: right;
+            margin-left: 240px;
+        }
+    </style>
+</head>
+<body>
+    <div id='wrap'>
+        <div id='header'>
+            <img src='../Foodcourt/img/food.PNG'>
+        </div>
+        <div id='content'>
+            <table>
+                <tr>
+                    <td>
+                        <button type='button'><img src='../Foodcourt/img/korea.PNG' id='korean'></button>
+                    </td>
+                    <td>
+                        <button type='button'><img src='../Foodcourt/img/japan.PNG' id='japanese'></button>
+                    </td>
+                    <td>
+                        <button type='button'><img src='../Foodcourt/img/china.PNG' id='chinese'></button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <button type='button'><img src='../Foodcourt/img/westem.PNG' id='western'></button>
+                    </td>
+                    <td>
+                        <button type='button'><img src='../Foodcourt/img/asian.PNG' id='asian'></button>
+                    </td>
+                    <td>
+                        <button type='button'><img src='../Foodcourt/img/dessert.PNG' id='dessert'></button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div id='footer'>
+            <img src='../Foodcourt/img/button_left.png' class='left_btn'>
+            <img src='../Foodcourt/img/button_right.png' class='right_btn'>
+        </div>
+    </div>
+</body>
+</html>

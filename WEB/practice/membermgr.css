@@ -1,0 +1,76 @@
+div, h1, form, header, body{
+    margin:0;
+    padding:0;
+}
+
+header{
+    margin-bottom: 15px;
+    border-bottom: 1px solid #DDD;
+}
+
+header>h1{
+    margin: 20px;
+}
+
+#reg, #edit{
+    padding: 20px;
+}
+
+#reg td, #edit td{
+    width: 150px;
+}
+
+#reg input, #edit input{
+    width: 130px;
+}
+
+#reg label, #edit label{
+    display: block;
+    background-color: black;
+    color: floralwhite;
+    padding: 5px;
+}
+
+#reg input[type=submit], #edit input[type=submit]{
+    font-size: 1.2em;
+    font-weight: bold;
+    height: 70px;
+}
+
+#reg input, #edit input{
+    padding: 10px;
+}
+
+h2.title{
+    border-bottom: 1px solid #DDD;
+    padding: 5px;
+    margin: 10px 0;
+}
+
+div.listarea{
+    padding: 20px;
+}
+
+.listtable{
+    width: 100%;
+    border: 1px solid lightgray;
+    border-collapse: collapse;
+}
+
+.listtable td, .listtable th{
+    border: 1px solid lightgray;
+    padding: 5px;
+}
+
+.listtable th{
+    background-color: black;
+    color: cornsilk;
+}
+
+.listtable td{
+    text-align: center;
+}
+
+#edit{
+    /* display: none; */
+}

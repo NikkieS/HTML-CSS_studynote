@@ -11,12 +11,28 @@ function Member(mid, mname, mpw){
 // 공통 함수 : 메소드 정의
 // prototype이라는 객체 
 Member.prototype.toString = function(){
+    var makeHtml = '';
+    makeHtml += '<td>';
+    makeHtml += this.id;
+    makeHtml += '</td>';
+    makeHtml += '<td>';
+    makeHtml += this.name;
+    makeHtml += '</td>';
+    makeHtml += '<td>';
+    makeHtml += this.pw;
+    makeHtml += '</td>';
+
+    return makeHtml;
 
 }
 
 // 데이터 저장 함수
 function addMember(member){
     members.push(member);
+    
+    // 동기화
+    setStorage();
+
     console.log(members);
     displayTable();
 }
@@ -30,10 +46,8 @@ function createMember(){
 
     // 배열에 데이터 추가
     addMember(new Member(id, name, pw));
-    // 동기화
-    setStorage();
 
-    document.getElementById().reset;
+    document.getElementById('regForm').reset();
 
     // form  태그의 action 실행이 되지 않도록 반드시 return false
     return false;
@@ -41,7 +55,7 @@ function createMember(){
 // 회원 리스트 출력 기능
 function displayTable(){
     var listHtml = '';
-    listHtml += '<table calss "listtable">';
+    listHtml += '<table calss="listtable">';
     listHtml += '   <tr>';
     listHtml += '       <th>index</th>';
     listHtml += '       <th>ID(이메일)</th>';
@@ -61,7 +75,7 @@ function displayTable(){
         listHtml += '   <tr>';
     }
 
-    listhtml +='</table>';
+    listHtml +='</table>';
 
     var listTable = document.getElementById('list');
     listTable.innerHTML = listHtml;
@@ -102,11 +116,43 @@ function editMember(){
     setStorage();
 
     alert("수정되었습니다.\n수정폼 화면을 숨깁니다.");
-    // 
+    // 수정 폼 영역 출력
+    document.getElementById('edit').style.display='none';
+
+    return false;
 }
 
+// 배열에서 데이터를 삭제
+function deleteMember(idx){
 
+    if(confirm('삭제하시겠습니까?')){
+        members.splice(idx, 1);
+        // 화면 갱신
+        displayTable();
+        // 동기화
+        setStorage();
+    }
+}
 
+// localStorage에 데이터 저장/수정/삭제 시 업데이트
+function setStorage(){
+    // 데이터의 갱신 : 추가, 수정, 삭제
+    localStorage.setItem('members', JSON.stringify(members));
+}
+
+// localStorage의 데이터와 배열의 동기화
+function initStorage(){
+    // localStorage에 저장되어 있는 데이터
+    var storageData = localStorage.getItem('members');
+
+    if(storageData==null){
+        // 프로그램 최초 시작 또는 데이터가 없는 상태
+        localStorage.setItem('members', JSON.stringify(members));
+    } else{
+        // 저장되어 있는 JSON 데이터를 배열 객체로 변환
+        members = JSON.stringify(storageData);
+    }
+}
 
 // 저장, 수정, submit 이벤트 처리
 window.onload = function(){
@@ -118,4 +164,8 @@ window.onload = function(){
     displayTable();
 
     // 입력 폼 casting -> onsubmit Event
+    document.getElementById('regForm').onsubmit = createMember;
+
+    // 수정 폼 casting -> onsubmit Event
+    document.getElementById('editForm').onsubmit = editMember;
 }
