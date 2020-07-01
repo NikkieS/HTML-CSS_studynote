@@ -1,6 +1,10 @@
 <%@ page import = "java.util.Date" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
+<%
+	String userName=(String) session.getAttribute("username"); // parameter: String name, return: Object
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,5 +20,12 @@
 
 	<!-- 표현식 -->
 	<%= now %>
+	<br>
+	현재 접속중인 사용자의 이름 : <%= userName %>
+	<br>
+	
+	<% session.setAttribute("username", "KING"); %>
+	<br>
+	<a href="session/sessionView01.jsp">session View</a>
 </body>
 </html>
