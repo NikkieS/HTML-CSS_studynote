@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>request Form JSP</title>
 </head>
 <body>
 	<h1>전송결과</h1>
@@ -32,6 +32,27 @@
 					}
 				%></td>
 			<%-- <%= request.getParameter("interest") %> </td>--%>
+		</tr>
+		<tr>
+			<td>요청 메소드</td>
+			<td><%= request.getMethod() %></td>
+		</tr>
+		<tr>
+			<td>쿠키 정보</td>
+			<td><%  
+					/* Cookie : getName(), getValue() */
+					Cookie[] cookies = request.getCookies();
+					for(int i=0; i<cookies.length; i++){
+						out.println(cookies[i].getName()+"="+cookies[i].getValue()+"<br>");
+					}
+				%></td>
+		</tr>
+		<tr>
+			<td>요청 정보 URL</td>
+			<td><%= request.getProtocol() %> <br>
+				<%= request.getRequestURL() %> <br> <!-- URL: 전체 주소 -->
+				<%= request.getRequestURI() %> <!-- URI: 8080포트 뒤 주소 (a.k.a 사용자의 요청) -->
+			</td>
 		</tr>
 	</table>
 </body>
