@@ -17,7 +17,27 @@
 	<%@ include file="/include/header.jsp" %> <!-- jsp container에서 돌기 때문에 / (root)만 잡아주면 된다 -->
 	
 	<div>
-		<h1>회원 가입</h1>
+		<h1>로그인</h1>
+		<form action="login.jsp" method="post">
+			<table id="login">
+				<tr>
+				    <td>ID</td>
+				    <td><input type = "email" name="id"></td>
+				</tr>
+				<tr>
+				    <td>PW</td>
+				    <td><input type = "password" name="pw"></td>
+				</tr>
+				<tr>
+				    <td>아이디 기억하기</td>
+				    <td><input type = "checkbox" name="save"></td>
+				</tr>
+				<tr>
+			       	<td></td>
+			       	<td><input id="btn_submit" type = "submit" value = "로그인"></td>
+		   		</tr>
+			</table>
+		</form>
 	</div>
 	
 	<!-- footer module화 -->

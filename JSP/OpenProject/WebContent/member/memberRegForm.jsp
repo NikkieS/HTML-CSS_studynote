@@ -17,7 +17,7 @@
 	<%@ include file="/include/header.jsp" %> <!-- jsp container에서 돌기 때문에 / (root)만 잡아주면 된다 -->
 	
 	<div>
-		<h1>로그인</h1>
+		<h1>회원가입</h1>
 	</div>
 	
 	<!-- footer module화 -->

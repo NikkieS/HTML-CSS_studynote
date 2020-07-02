@@ -3,6 +3,9 @@
 <%
 	request.setCharacterEncoding("utf-8");
 %>
+<jsp:useBean id="requestInfo" class="model.RequestMemberInfo" scope="page"/>
+<jsp:setProperty property="*" name="requestInfo"/>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,9 +16,9 @@
 	<h1>전송결과</h1>
 	<hr>
 	<ul>
-		<li>아이디: <%= request.getParameter("id") %></li>
-		<li>비밀번호: <%= request.getParameter("pw") %></li>
-		<li>이름: <%= request.getParameter("userName") %></li>
+		<li>아이디: <%=requestInfo.getId() %> <%--= request.getParameter("id") --%></li>
+		<li>비밀번호: <%=requestInfo.getPw() %> <%--= request.getParameter("pw") --%></li>
+		<li>이름: <%=requestInfo.getUserName() %> <%--= request.getParameter("userName") --%></li>
 	</ul>
 	<%-- <table border="1">
 		<tr>

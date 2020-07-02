@@ -21,6 +21,9 @@
 a:visited{
 	color: black;
 }
+#login>tbody>tr>td>input{
+	border:none;
+}
 footer{
 	text-align: center;
 	border: 1px solid #DDD;
