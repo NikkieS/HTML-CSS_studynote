@@ -1,0 +1,52 @@
+<%@page import="model.MemberInfo"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+
+<%
+	// 로그인 처리
+	// 아이디의 값과 비밀번호의 문자열을 비교해서 같으면 로그인 처리
+	
+	// 1. 아이디, 비밀번호 데이터를 받는다
+	// 2. 로그인을 위한 비교 : 아이디 비밀번호 문자열 비교
+	// 3. 로그인 처리 : 세션에 사용자 정보를 저장
+	// 4. 응답 처리 : html 로그인처리 일 때 | 로그인이 되지 않았을 때
+	
+	// 1.
+	String uid = request.getParameter("id");
+	String upw = request.getParameter("pw");
+	
+	boolean loginChk = false;
+	// 2.
+	if(uid.equals(upw)){
+		// 3.
+		// session.setAttribute("memberId", uid);
+		session.setAttribute("memberInfo", new MemberInfo(uid, upw));
+		loginChk = true;
+	}
+%>
+<%
+	if(loginChk){
+%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Login Check</title>
+</head>
+<body>
+	<h1>로그인 되었습니다.</h1>
+	<h2>id: <%=uid %>, pw: <%=upw %></h2>
+	<a href="mypage.jsp">My Page</a>
+	<a href="logout.jsp">Log out</a>
+</body>
+</html>
+<%
+	} else{
+%>
+<script>
+	alert("아이디 또는 비밀번호를 확인해주세요");
+	history.go(-1);
+</script>
+<%
+	}
+%>

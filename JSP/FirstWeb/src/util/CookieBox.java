@@ -14,9 +14,11 @@ public class CookieBox {
 		Cookie[] cookies = request.getCookies();
 		
 		// 쿠키 갯수만큼 반복하여 Map에 저장
-		for(int i=0; i<cookies.length; i++) {
-			// Map 데이터 저장
-			cookieMap.put(cookies[i].getName(), cookies[i]);
+		if(cookies!=null) {
+			for(int i=0; i<cookies.length; i++) {
+				// Map 데이터 저장
+				cookieMap.put(cookies[i].getName(), cookies[i]);
+			}
 		}
 	}
 	
