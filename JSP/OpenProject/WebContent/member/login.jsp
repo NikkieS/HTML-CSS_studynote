@@ -23,7 +23,15 @@
 	// 세션에 데이터 저장
 	session.setAttribute("memberInfo", new MemberInfo(uid, pw));
 	
-	response.sendRedirect(request.getContextPath()+"/member/mypage/mypage.jsp");
+	// 어플리케이션 데이터 불러오기
+	String msg = "";
+	MemberInfo m = (MemberInfo) application.getAttribute("memberInfo");
+	m.mPush();
+	if(m.getList().containsKey(uid) && m.getList().get(uid)==pw){
+		msg="아이디 확인";
+		response.sendRedirect(request.getContextPath()+"/member/mypage/mypage.jsp");
+	}else{
+		msg="없는 아이디 입니다. 먼저 가입해 주세요";
 %>
 <!DOCTYPE html>
 <html>
@@ -36,21 +44,15 @@
 
 </head>
 <body>
-	<%-- <!-- header module화 -->
+	<!-- header module화 -->
 	<%@ include file="/include/header.jsp" %> <!-- jsp container에서 돌기 때문에 / (root)만 잡아주면 된다 -->
 	
-	<h1>쿠키 생성</h1> <br>
-	<ul>
-		<li>id: <%= uid %></li>
-		<li>pw: <%= pw %></li>
-		<li><%
-				if(check!=null){
-					out.println("아이디를 저장합니다.");
-				}else{
-					out.println("아이디를 저장합니다.");
-				}
-			%></li>
-		<a href="<%= request.getContextPath() %>/mypage/mypage.jsp">My Page</a>
-	</ul> --%>
+	<h1><%= msg %></h1> <br>
+	
+	<a href="<%= request.getContextPath() %>/member/memberRegForm.jsp">회원가입하기</a>
+	
 </body>
 </html>
+<%
+	}
+%>

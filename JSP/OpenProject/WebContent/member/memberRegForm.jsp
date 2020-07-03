@@ -20,7 +20,8 @@
 	
 	<div>
 		<h1>회원가입</h1>
-		<table id="reg">
+		<form action="<%=request.getContextPath() %>/member/memberLogForm.jsp" method="post">
+			<table id="reg">
 			<tr>
 			    <td>ID</td>
 			    <td><input type = "email" name="rid" value="" required></td>
@@ -33,7 +34,8 @@
 		       	<td></td>
 		       	<td><input id="btn_submit" type = "submit" value = "가입하기"><input id="btn_rest" type = "reset" value = "초기화"></td>
 	   		</tr>
-		</table>
+			</table>
+		</form>
 	</div>
 	
 	<!-- footer module화 -->
@@ -41,7 +43,8 @@
 </body>
 </html>
 <%
-	/* String rid = request.getParameter("rid");
+	String rid = request.getParameter("rid");
 	String rpw = request.getParameter("rpw");
-	session.setAttribute("memberInfo", new MemberInfo(rid, rpw)); */
+	
+	application.setAttribute("memberInfo", new MemberInfo(rid, rpw));
 %>
