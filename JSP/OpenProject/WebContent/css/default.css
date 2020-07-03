@@ -22,7 +22,7 @@ a:visited{
 	color: black;
 }
 #login>tbody>tr>td>input{
-	border:none;
+	border: 1px solid #DDD;
 }
 footer{
 	text-align: center;

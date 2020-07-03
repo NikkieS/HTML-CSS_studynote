@@ -1,5 +1,12 @@
+<%@page import="model.MemberInfo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+	MemberInfo memberInfo = (MemberInfo)session.getAttribute("memberInfo");
+	if(memberInfo==null){
+		response.sendRedirect(request.getContextPath()+"/member/memberLogForm.jsp");
+	}else{
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,3 +31,6 @@
 	<%@ include file="/include/footer.jsp" %>
 </body>
 </html>
+<%
+	}
+%>

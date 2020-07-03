@@ -1,5 +1,7 @@
+<%@page import="model.MemberInfo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,9 +20,28 @@
 	
 	<div>
 		<h1>회원가입</h1>
+		<table id="reg">
+			<tr>
+			    <td>ID</td>
+			    <td><input type = "email" name="rid" value="" required></td>
+			</tr>
+			<tr>
+			    <td>PW</td>
+			    <td><input type = "password" name="rpw" required></td>
+			</tr>
+			<tr>
+		       	<td></td>
+		       	<td><input id="btn_submit" type = "submit" value = "가입하기"><input id="btn_rest" type = "reset" value = "초기화"></td>
+	   		</tr>
+		</table>
 	</div>
 	
 	<!-- footer module화 -->
 	<%@ include file="/include/footer.jsp" %>
 </body>
 </html>
+<%
+	/* String rid = request.getParameter("rid");
+	String rpw = request.getParameter("rpw");
+	session.setAttribute("memberInfo", new MemberInfo(rid, rpw)); */
+%>
