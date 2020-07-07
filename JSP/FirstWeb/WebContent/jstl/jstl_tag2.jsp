@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>JSTL tag</title>
+<title>JSTL Redirected Page</title>
 </head>
 <body>
 	<select name="year">
