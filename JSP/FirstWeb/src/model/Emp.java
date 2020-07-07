@@ -1,15 +1,15 @@
 package model;
 
-public class emp {
+public class Emp {
 	private int empno;
 	private String ename;
 	private int sal;
 	private String job;
 	
 	
-	public emp() {
+	public Emp() {
 	}
-	public emp(int empno, String ename, int sal, String job) {
+	public Emp(int empno, String ename, int sal, String job) {
 		this.empno = empno;
 		this.ename = ename;
 		this.sal = sal;
