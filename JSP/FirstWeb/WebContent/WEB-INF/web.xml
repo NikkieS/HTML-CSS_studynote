@@ -88,7 +88,8 @@
   </listener>
   <context-param>
   	<param-name>uploadPath</param-name>
-  	<param-value>/uploadFile/member/photo</param-value>
+  	<!-- <param-value>/uploadFile/member/photo</param-value> -->
+  	<param-value>/file</param-value>
   </context-param>
   
 </web-app>
