@@ -2,6 +2,8 @@ package service;
 
 import java.io.File;
 import java.io.UnsupportedEncodingException;
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.Iterator;
 import java.util.List;
 
@@ -13,6 +15,7 @@ import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 import dao.ReportDao;
+import jdbc.ConnProvider;
 import model.Report;
 
 public class ReportRegService {
@@ -26,6 +29,7 @@ public class ReportRegService {
 	
 	public int regReport(HttpServletRequest request) {
 		int resultCnt = 0;
+		Connection conn = null;
 		
 		String sname="";
 		String stn="";
@@ -89,14 +93,21 @@ public class ReportRegService {
 						item.write(saveFile);
 						System.out.println("저장 완료");
 						
+						// saveFile.delete();
 						filepath = uri+"/"+newFileName;
 					}
 				}
+				
 				// 데이터 베이스 저장
 				Report report = new Report();
-				report.setSname(sname);
+				report.setUname(sname);
 				report.setStn(stn);
 				report.setReport(filepath);
+				
+				conn = ConnProvider.getConn();
+				dao = ReportDao.getInstance();
+				
+				resultCnt = dao.insertReport(conn, report);
 			}
 			
 		} catch (FileUploadException e) {
@@ -106,9 +117,14 @@ public class ReportRegService {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			
+			if(conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
 		}
-		
 		
 		return resultCnt;
 	}

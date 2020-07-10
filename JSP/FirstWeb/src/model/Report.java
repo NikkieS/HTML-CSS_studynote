@@ -2,13 +2,13 @@ package model;
 
 public class Report {
 	private int idx;
-	private String sname;
+	private String uname;
 	private String stn;
 	private String report;
 	
 	public Report(int idx, String sname, String stn, String report) {
 		this.idx = idx;
-		this.sname = sname;
+		this.uname = sname;
 		this.stn = stn;
 		this.report = report;
 	}
@@ -24,12 +24,12 @@ public class Report {
 		this.idx = idx;
 	}
 
-	public String getSname() {
-		return sname;
+	public String getUname() {
+		return uname;
 	}
 
-	public void setSname(String sname) {
-		this.sname = sname;
+	public void setUname(String sname) {
+		this.uname = sname;
 	}
 
 	public String getStn() {
@@ -50,6 +50,6 @@ public class Report {
 
 	@Override
 	public String toString() {
-		return "Report [idx=" + idx + ", sname=" + sname + ", stn=" + stn + ", report=" + report + "]";
+		return "Report [idx=" + idx + ", sname=" + uname + ", stn=" + stn + ", report=" + report + "]";
 	}
 }

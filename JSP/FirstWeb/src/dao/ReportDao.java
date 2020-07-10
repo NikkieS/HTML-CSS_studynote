@@ -22,7 +22,7 @@ public class ReportDao {
 		String sql = "insert into report values (report_seq.nextVal, ?, ?, ?)";
 		try {
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, report.getSname());
+			pstmt.setString(1, report.getUname());
 			pstmt.setString(2, report.getStn());
 			pstmt.setString(3, report.getReport());
 			
