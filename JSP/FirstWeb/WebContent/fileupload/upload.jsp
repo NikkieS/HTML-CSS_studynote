@@ -1,3 +1,4 @@
+<%@page import="java.io.File"%>
 <%@page import="java.util.Iterator"%>
 <%@page import="org.apache.commons.fileupload.FileItem"%>
 <%@page import="java.util.List"%>
@@ -38,6 +39,24 @@
 				System.out.println("파일 이름: "+ filename);
 				System.out.println("파일 타입: "+ contentType);
 				System.out.println("파일 사이즈: "+ sizeInBytes);
+				
+				// 서버 내부의 경로
+				// String uri = "/file";
+			
+				// 시스템의 실제 경로
+				// String realPath = request.getSession().getServletContext().getRealPath(uri);
+				// System.out.println(realPath);
+				
+				// alternative solution
+				String uri = request.getSession().getServletContext().getInitParameter("uploadPath");
+				String realPath = request.getSession().getServletContext().getRealPath(uri);
+				String newFileName= System.nanoTime()+"_"+filename;
+				
+				// 서버의 저장소에 실제 저장
+				// File saveFile = new File(realPath, filename); // 파일 이름이 같기 때문에 중복업로드 시 덮어쓰게 된다 -> 파일 이름을 특별하게 지정하기
+				File saveFile = new File(realPath, newFileName);
+				item.write(saveFile);
+				System.out.println("저장 완료");
 			}
 		}
 		
