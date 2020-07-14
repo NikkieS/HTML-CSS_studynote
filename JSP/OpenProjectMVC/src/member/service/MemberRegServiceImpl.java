@@ -21,7 +21,9 @@ import member.model.Member;
 import service.Service;
 
 public class MemberRegServiceImpl implements Service {
-
+	
+	MemberDao dao;
+	
 	@Override
 	public String getViewPage(HttpServletRequest request, HttpServletResponse response) {
 		
@@ -29,7 +31,6 @@ public class MemberRegServiceImpl implements Service {
 		// 사용자 데이터 받기: uid, upw, uname, uphoto(경로)
 		
 		int resultCnt = 0;
-		MemberDao dao=null;
 		
 		// 데이터 베이스에 입력할 데이터 변수
 		String uid=null;
@@ -101,6 +102,7 @@ public class MemberRegServiceImpl implements Service {
 				resultCnt = dao.insertMember(conn, member);
 				
 				request.setAttribute("member", member);
+				request.setAttribute("result", resultCnt);
 			}
 			
 		} catch (FileUploadException e) {
@@ -109,7 +111,7 @@ public class MemberRegServiceImpl implements Service {
 			e.printStackTrace();
 		} catch (Exception e) {
 			e.printStackTrace();
-		} finally {
+		} finally { 
 			if(conn != null) {
 				try {
 					conn.close();
