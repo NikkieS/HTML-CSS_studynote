@@ -102,7 +102,7 @@ public class MemberEditServiceImpl implements Service {
 				dao = MemberDao.getInstance();
 				
 				// dao.deleteMember(conn, idx);
-				resultCnt = dao.insertMember(conn, member);
+				resultCnt = dao.editMember(conn, member, idx);
 				
 				
 				request.setAttribute("member", member);

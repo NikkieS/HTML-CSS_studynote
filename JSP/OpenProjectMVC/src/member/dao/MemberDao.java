@@ -172,5 +172,27 @@ public class MemberDao {
 		}
 		return resultCnt;
 	}
+	public int editMember(Connection conn, Member member, String idx) throws SQLException {
+		int resultCnt = 0;
+		PreparedStatement pstmt = null;
+		int newIdx = Integer.parseInt(idx);
+		
+		try {
+			String sql="update member set uid=?, upw=?, uname=?, uphoto=? where idx=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, member.getUid());
+			pstmt.setString(2, member.getUpw());
+			pstmt.setString(3, member.getUname());
+			pstmt.setString(4, member.getUphoto());
+			pstmt.setInt(5, newIdx);
+			
+			resultCnt = pstmt.executeUpdate();
+		} finally {
+			if(pstmt != null) {
+				pstmt.close();
+			}
+		}
+		return resultCnt;
+	}
 
 }
