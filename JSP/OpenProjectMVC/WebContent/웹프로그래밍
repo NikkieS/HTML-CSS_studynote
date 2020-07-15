@@ -28,3 +28,8 @@
 	- Service, view
 2. 회원 데이터 처리 (가입 처리)
 	- Service, DAO(insert), view
+3. 아이디 체크
+	- Service, DAO(select), view(html X -> text) Y|N
+	
+회원 리스트
+Service -> DAO -> ListView
