@@ -36,6 +36,7 @@
 			<th>비밀번호</th>
 			<th>이름</th>
 			<th>첨부파일</th>
+			<th>관리</th>
 		</tr>
 	<c:if test="${not empty listView.memberList }">
 	<c:forEach items="${listView.memberList }" var="member">
@@ -45,7 +46,7 @@
 			<td>${member.upw }</td>
 			<td>${member.uname }</td>
 			<td><img alt="img" src="<c:url value="${member.uphoto }"/>"></td>
-			<td>수정 | <a href="javascript:memberDel(${member.idx }, ${member.upw })">삭제</a></td>
+			<td><a href="javascript:memberEdit(${member.idx }, ${member.upw })">수정</a> | <a href="javascript:memberDel(${member.idx }, ${member.upw })">삭제</a></td>
 		</tr>
 	</c:forEach>
 	</c:if>
@@ -67,6 +68,17 @@
 			var pw = prompt("삭제하실 회원의 비밀번호를 입력해주세요.");
 			if(upw==pw){
 				location.href="memberDelete.do?idx="+idx;
+			} else{
+				alert("입력하신 비밀번호가 일치하지 않습니다.");
+				return false;
+			}
+		}
+	}
+	function memberEdit(idx, upw){
+		if(confirm("선택하신 회원 정보를 수정하시겠습니까?")){
+			var pw = prompt("수정하실 회원의 비밀번호를 입력해주세요.");
+			if(upw==pw){
+				location.href="memberEditForm.do?idx="+idx;
 			} else{
 				alert("입력하신 비밀번호가 일치하지 않습니다.");
 				return false;
