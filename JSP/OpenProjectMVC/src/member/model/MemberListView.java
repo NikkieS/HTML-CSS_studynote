@@ -17,9 +17,11 @@ public class MemberListView {
 		this.memberList = memberList;
 		this.countPerPage = countPerPage;
 		this.startRow = startRow;
+		
+		calTotalPageCount();
 	}
 	private void calTotalPageCount() {
-		if(memberTotalCount ==0) {
+		if(memberTotalCount == 0) {
 			pageTotalCount = 0;
 		} else {
 			pageTotalCount = memberTotalCount/countPerPage;
@@ -47,7 +49,8 @@ public class MemberListView {
 	public int getStartRow() {
 		return startRow;
 	}
-	
-	
-	
+	public int getPageTotalCount() {
+		return pageTotalCount;
+	}
+
 }

@@ -32,6 +32,7 @@ public class MemberListServiceImpl implements Service {
 			
 			// 전체 가입자수
 			int memberTotalCount = dao.selectTotalCount(conn);
+			
 			// 시작  index
 			int startRow = 0;
 			// 현재 페이지 수
@@ -43,8 +44,8 @@ public class MemberListServiceImpl implements Service {
 			
 			if(memberTotalCount>0) {
 				startRow = (currentPage-1)*COUNT_PER_PAGE;
-				System.out.println(startRow);
-				memberList = dao.selectList(conn, startRow);
+				
+				memberList = dao.selectList(conn, startRow, COUNT_PER_PAGE);
 			} else {
 				currentPage = 0;
 				memberList = Collections.emptyList();
