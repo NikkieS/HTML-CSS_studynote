@@ -89,7 +89,7 @@ public class MemberDao {
 		}
 		return resultCnt;
 	}
-	public List<Member> selectList(Connection conn, int startRow) throws SQLException {
+	public List<Member> selectList(Connection conn, int startRow, int countperpage) throws SQLException {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		Member member = null;
@@ -97,9 +97,10 @@ public class MemberDao {
 		List<Member> list = new ArrayList<Member>();
 		
 		try {
-			String sql = "select * from member order by uname limit ?, 3";	// 시작점, 3개
+			String sql = "select * from member order by uname limit ?, ?";	// 시작점, 3개
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, startRow);
+			pstmt.setInt(2, countperpage);
 			
 			rs = pstmt.executeQuery();
 			
@@ -122,5 +123,53 @@ public class MemberDao {
 			}
 		}
 		return list;
+	}
+	public Member selectMember(Connection conn, String idx) throws SQLException {
+		Member member = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int newIdx = Integer.parseInt(idx);
+		try {
+			String sql = "select * from member where idx=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, newIdx);
+			
+			rs=pstmt.executeQuery();
+			
+			if(rs.next()) {
+				member = new Member();
+				member.setIdx(newIdx);
+				member.setUid(rs.getString("uid"));
+				member.setUpw(rs.getString("upw"));
+				member.setUname(rs.getString("uname"));
+				member.setUphoto(rs.getString("uphoto"));
+			}
+		} finally {
+			if(rs != null) {
+				rs.close();
+			}
+			if(pstmt != null) {
+				pstmt.close();
+			}
+		}
+		return member;
+	}
+	public int deleteMember(Connection conn, String idx) throws SQLException {
+		int resultCnt = 0;
+		PreparedStatement pstmt = null;
+		int newIdx = Integer.parseInt(idx);
+		
+		try {
+			String sql = "delete from member where idx=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, newIdx);
+			
+			resultCnt = pstmt.executeUpdate();
+		} finally {
+			if(pstmt != null) {
+				pstmt.close();
+			}
+		}
+		return resultCnt;
 	}
 }
