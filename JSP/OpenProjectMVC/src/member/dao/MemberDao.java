@@ -21,7 +21,7 @@ public class MemberDao {
 		int resultCnt = 0;
 		
 		PreparedStatement pstmt = null;
-		String sql = "insert into member (uid, upw, uname, uphoto) values (?, ?, ?, ?)";
+		String sql = "insert into project.member (uid, upw, uname, uphoto) values (?, ?, ?, ?)";
 		try {
 			pstmt=conn.prepareStatement(sql);
 			pstmt.setString(1, member.getUid());
@@ -47,7 +47,7 @@ public class MemberDao {
 		
 		PreparedStatement pstmt = null;
 		try {
-			String sql = "select count(*) from member where uid=?";
+			String sql = "select count(*) from project.member where uid=?";
 			pstmt=conn.prepareStatement(sql);
 			pstmt.setString(1, id);
 			
@@ -71,7 +71,7 @@ public class MemberDao {
 		
 		try {
 			stmt=conn.createStatement();
-			String sql = "select count(*) from member";
+			String sql = "select count(*) from project.member";
 			
 			rs=stmt.executeQuery(sql);
 			
@@ -97,7 +97,7 @@ public class MemberDao {
 		List<Member> list = new ArrayList<Member>();
 		
 		try {
-			String sql = "select * from member order by uname limit ?, ?";	// 시작점, 3개
+			String sql = "select * from project.member order by uname limit ?, ?";	// 시작점, 3개
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, startRow);
 			pstmt.setInt(2, countperpage);
@@ -130,7 +130,7 @@ public class MemberDao {
 		ResultSet rs = null;
 		int newIdx = Integer.parseInt(idx);
 		try {
-			String sql = "select * from member where idx=?";
+			String sql = "select * from project.member where idx=?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, newIdx);
 			
@@ -160,7 +160,7 @@ public class MemberDao {
 		int newIdx = Integer.parseInt(idx);
 		
 		try {
-			String sql = "delete from member where idx=?";
+			String sql = "delete from project.member where idx=?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, newIdx);
 			
@@ -178,7 +178,7 @@ public class MemberDao {
 		int newIdx = Integer.parseInt(idx);
 		
 		try {
-			String sql="update member set uid=?, upw=?, uname=?, uphoto=? where idx=?";
+			String sql="update project.member set uid=?, upw=?, uname=?, uphoto=? where idx=?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, member.getUid());
 			pstmt.setString(2, member.getUpw());
