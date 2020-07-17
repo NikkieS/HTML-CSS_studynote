@@ -194,5 +194,29 @@ public class MemberDao {
 		}
 		return resultCnt;
 	}
+	public int selectbByUid(Connection conn, String uid, String upw) throws SQLException {
+		int resultCnt = 0;
+		ResultSet rs;
+		PreparedStatement pstmt = null;
+		
+		try {
+			String sql = "select * from project.member where uid=?";
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, uid);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				if(upw.equals(rs.getString("upw"))){
+					resultCnt = 1;
+				}
+			}
+		} finally {
+			if(pstmt != null) {
+				pstmt.close();
+			}
+		}
+		return resultCnt;
+	}
 
 }
