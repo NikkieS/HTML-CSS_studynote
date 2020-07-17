@@ -8,7 +8,6 @@
 
 <link rel="stylesheet" href="<c:url value="/css/default.css"/>" type="text/css">
 
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <style>
 	.check_ok{
 		color: blue;

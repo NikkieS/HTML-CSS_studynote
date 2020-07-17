@@ -10,7 +10,7 @@ public class MemberLogFormServiceImpl implements Service {
 	@Override
 	public String getViewPage(HttpServletRequest request, HttpServletResponse response) {
 		
-		return "/WEB-INF/views/member/logForm.jsp";
+		return "/WEB-INF/views/member/memberLogForm.jsp";
 	}
 
 }
