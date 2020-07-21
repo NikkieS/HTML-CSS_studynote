@@ -1,0 +1,21 @@
+<script src="http://developers.kakao.com/sdk/js/kakao.min.js"></script>
+
+<a href="javascript:;" id="kakao-link-btn">
+<img src="http://developers.kakao.com/assets/img/about/logos/kakaolink/kakaolink_btn_medium.png" width="10px" />
+</a>
+
+<script type="text/javascript">
+  //<![CDATA[
+    // // 사용할 앱의 JavaScript 키를 설정해 주세요.
+    Kakao.init('28acda8ed9c06d820ed355f6085698ed');
+    // // 카카오링크 버튼을 생성합니다. 처음 한번만 호출하면 됩니다.
+    Kakao.Link.createCustomButton({
+      container: '#kakao-link-btn',
+      templateId: 32861,
+      templateArgs:{
+    	  'title': 'Kakao msg forwarded from the web',
+    	  'description': 'AIA semi-final project'
+      }
+    });
+  //]]>
+</script>
