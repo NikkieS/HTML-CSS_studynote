@@ -1,5 +1,7 @@
 package lms.dao;
 
+import java.sql.Connection;
+
 public class AdminDao {
 	
 	// 싱글톤 처리 완료
@@ -12,6 +14,11 @@ public class AdminDao {
 	
 	public static AdminDao getInstance() {
 		return dao;
+	}
+
+	public int selectById(Connection conn, String id, String pw) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 	
 	

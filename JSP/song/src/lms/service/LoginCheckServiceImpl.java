@@ -10,9 +10,8 @@ import dbcp.ConnectionProvider;
 import lms.dao.AdminDao;
 import lms.dao.StudentDao;
 import lms.dao.TeacherDao;
-
 	
-public class LogServiceImpl implements Service {
+public class LoginCheckServiceImpl implements Service {
 
 	// 자신이 사용할 Dao/Model/Service resurve 파일 번호를 항상 공유해주세용!
 	StudentDao sDao;
@@ -23,15 +22,24 @@ public class LogServiceImpl implements Service {
 	public String getViewPage(HttpServletRequest request, HttpServletResponse response) {
 		int resultCnt = 0;
 		Connection conn = null;
+		
 		String type = request.getParameter("loginType");
-		String uid = request.getParameter("uid");
-		String upw = request.getParameter("upw");
+		String id = request.getParameter("id");
+		String pw = request.getParameter("pw");
+		
+		
 		
 		try {
 			conn = ConnectionProvider.getConnection();
 			if(type.equals("sLogin")) {
-				sDao = sDao.getInstance();
-				resultCnt = sDao.selectById(conn, uid, upw);
+				sDao = StudentDao.getInstance();
+				resultCnt = sDao.selectById(conn, id, pw);
+			} else if(type.equals("tLogin")) {
+				tDao = TeacherDao.getInstance();
+				resultCnt = tDao.selectById(conn, id, pw);
+			} else {
+				aDao = AdminDao.getInstance();
+				resultCnt = aDao.selectById(conn, id, pw);
 			}
 		}catch(SQLException e) {
 			e.printStackTrace();
@@ -46,7 +54,7 @@ public class LogServiceImpl implements Service {
 		}
 		
 		request.setAttribute("result", resultCnt);
-		return "/WEB-INF/views/loginConfirm.jsp";
+		return "/WEB-INF/views/loginCheck.jsp";
 	}
 
 }

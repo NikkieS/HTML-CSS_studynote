@@ -1,4 +1,4 @@
-package util;
+package lms.util;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -14,11 +14,9 @@ public class CookieBox {
 		Cookie[] cookies = request.getCookies();
 		
 		// 쿠키 갯수만큼 반복하여 Map에 저장
-		if(cookies!=null) {
-			for(int i=0; i<cookies.length; i++) {
-				// Map 데이터 저장
-				cookieMap.put(cookies[i].getName(), cookies[i]);
-			}
+		for(int i=0; i<cookies.length; i++) {
+			// Map 데이터 저장
+			cookieMap.put(cookies[i].getName(), cookies[i]);
 		}
 	}
 	
@@ -46,8 +44,8 @@ public class CookieBox {
 		return new Cookie(name, value);
 	}
 	
-	public static Cookie createCookie(String name, String value, String path, int maxAge) {
-		Cookie c = new Cookie(name, value);
+	public static Cookie createCookie(String id, String value, String path, int maxAge) {
+		Cookie c = new Cookie(id, value);
 		c.setPath(path);
 		c.setMaxAge(maxAge);
 		

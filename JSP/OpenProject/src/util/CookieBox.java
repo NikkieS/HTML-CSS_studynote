@@ -44,8 +44,8 @@ public class CookieBox {
 		return new Cookie(name, value);
 	}
 	
-	public static Cookie createCookie(String uid, String value, String path, int maxAge) {
-		Cookie c = new Cookie(uid, value);
+	public static Cookie createCookie(String name, String value, String path, int maxAge) {
+		Cookie c = new Cookie(name, value);
 		c.setPath(path);
 		c.setMaxAge(maxAge);
 		
