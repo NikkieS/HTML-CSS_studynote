@@ -8,16 +8,16 @@ import di.domain.RegisterRequest;
 import di.exception.AlreadyExistingMemberException;
 import di.exception.IdPasswordNotMatchingException;
 import di.exception.MemberNotFoundException;
-import di.service.ChangePasswordService2;
-import di.service.MemberRegisterService2;
+import di.service.ChangePasswordService3;
+import di.service.MemberRegisterService3;
 
-public class MainForSpring5 {
+public class MainForSpring8 {
 	
 	private static GenericXmlApplicationContext ctx = null;
 
 	public static void main(String[] args) {
-		String[] configPath = {"classpath:config1.xml", "classpath:config2.xml"};
-		ctx = new GenericXmlApplicationContext(configPath);
+		
+		ctx = new GenericXmlApplicationContext("classpath:appCtx8.xml");
 
 		Scanner reader = new Scanner(System.in);
 		while (true) {
@@ -46,7 +46,7 @@ public class MainForSpring5 {
 		}
 		
 		// Spring Container 객체 저장 타입은 Object
-		MemberRegisterService2 regSvc = ctx.getBean("memberregSvc", MemberRegisterService2.class);
+		MemberRegisterService3 regSvc = ctx.getBean("memberregSvc", MemberRegisterService3.class);
 		
 		RegisterRequest req = new RegisterRequest();
 		req.setEmail(arg[1]);
@@ -70,7 +70,7 @@ public class MainForSpring5 {
 			printHelp();
 			return;
 		}
-		ChangePasswordService2 changePwdSvc = ctx.getBean("memberPwSvc", ChangePasswordService2.class);
+		ChangePasswordService3 changePwdSvc = ctx.getBean("memberPwSvc", ChangePasswordService3.class);
 		try {
 			changePwdSvc.changePassword(arg[1], arg[2], arg[3]);
 			System.out.println("암호를 변경했습니다.\n");

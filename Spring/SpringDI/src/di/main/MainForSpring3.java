@@ -18,7 +18,7 @@ public class MainForSpring3 {
 	public static void main(String[] args) {
 		
 		ctx = new GenericXmlApplicationContext("classpath:appCtx3.xml");
-
+		
 		Scanner reader = new Scanner(System.in);
 		while (true) {
 			System.out.println("명렁어를 입력하세요:");

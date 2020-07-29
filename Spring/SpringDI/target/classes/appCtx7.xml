@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<!-- bean은 순차적으로 실행 top-down processing -->
+	<!-- 객체를 등록 -->
+	<bean id="dao" class="di.dao.MemberDao"></bean>
+	
+	<!-- 객체를 등록: 자동 주입 -->
+	<!-- [default] scope: singleton -->
+	<bean id="memberregSvc" 
+		  class="di.service.MemberRegisterService2" 
+		  autowire="byName" 
+		  scope="prototype">	<!-- prototype: 매번 새로운 객체를 생성한다 --><!-- byName: 동일한 변수 이름으로 찾는다 -->
+	</bean>
+	
+	<bean id="memberPwSvc" 
+		  class="di.service.ChangePasswordService2" 
+		  autowire="byType" 		
+		  scope="singleton">	<!-- singleton: 하나의 객체만 생성한다 --><!-- byType: 동일한 타입으로 찾는다 -->
+	</bean>
+</beans>

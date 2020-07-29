@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd">
+	
+	<!-- bean은 순차적으로 실행 top-down processing -->
+	<!-- 객체를 등록 -->
+	<!-- <bean id="dao" class="di.dao.MemberDao"></bean> -->
+	
+	<!-- annotation 설정 -->
+	<context:annotation-config/>
+	<context:component-scan base-package="di"/>
+	
+	<!-- 객체생성: annotation으로 자동 주입 -->
+	<!-- [default] scope: singleton -->
+	<!-- <bean id="memberregSvc" 
+		  class="di.service.MemberRegisterService3">
+	</bean>
+	
+	<bean id="memberPwSvc" 
+		  class="di.service.ChangePasswordService3">
+	</bean> -->
+</beans>

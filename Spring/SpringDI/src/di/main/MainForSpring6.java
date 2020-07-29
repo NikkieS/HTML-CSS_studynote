@@ -11,13 +11,13 @@ import di.exception.MemberNotFoundException;
 import di.service.ChangePasswordService2;
 import di.service.MemberRegisterService2;
 
-public class MainForSpring5 {
+public class MainForSpring6 {
 	
 	private static GenericXmlApplicationContext ctx = null;
 
 	public static void main(String[] args) {
-		String[] configPath = {"classpath:config1.xml", "classpath:config2.xml"};
-		ctx = new GenericXmlApplicationContext(configPath);
+		
+		ctx = new GenericXmlApplicationContext("classpath:appCtx6.xml");
 
 		Scanner reader = new Scanner(System.in);
 		while (true) {
