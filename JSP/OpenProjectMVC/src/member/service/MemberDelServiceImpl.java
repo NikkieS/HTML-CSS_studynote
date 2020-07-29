@@ -2,8 +2,6 @@ package member.service;
 
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.util.Collections;
-import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -11,7 +9,6 @@ import javax.servlet.http.HttpServletResponse;
 import jdbc.ConnProvider;
 import member.dao.MemberDao;
 import member.model.Member;
-import member.model.MemberListView;
 import service.Service;
 
 public class MemberDelServiceImpl implements Service {

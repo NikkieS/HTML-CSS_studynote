@@ -9,6 +9,7 @@
 	Cookie c = new Cookie("id", uid);
 	
 	if(uid!=null && check!=null){
+		// response.addCookie(CookieBox.createCookie("id", uid, "/web/", 60));
 		response.addCookie(CookieBox.createCookie("id", uid, "/web/", 60));
 	}else{
 		
