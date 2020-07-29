@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<!-- bean은 순차적으로 실행 top-down processing -->
+	<!-- 객체를 등록 -->
+	<bean id="memberDao" class="di.dao.MemberDao"></bean>
+	
+	<!-- 객체를 등록: 생성자 주입방식 -->
+	<bean id="memberregSvc" class="di.service.MemberRegisterService">	
+		<constructor-arg>
+			<!-- 생성자 argument에 들어갈 객체타입 설정 -->
+			<ref bean="memberDao"/> <!-- ref: 객체를 참조한다, bean: bean에 들어가있는 객체 -->
+		</constructor-arg>
+	</bean>
+	
+	<bean id="memberPwSvc" class="di.service.ChangePasswordService">
+		<constructor-arg ref="memberDao"></constructor-arg>
+	</bean>
+</beans>

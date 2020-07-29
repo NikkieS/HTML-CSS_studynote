@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<!-- bean은 순차적으로 실행 top-down processing -->
+	<!-- 객체를 등록 -->
+	<bean id="memberDao" class="di.dao.MemberDao"></bean>
+	
+	<!-- 객체를 등록: setter 메소드 주입방식 -->
+	<bean id="memberregSvc" class="di.service.MemberRegisterService2">	
+		<!-- property: 클래스의 [속성] 중 setter method를 사용 -->
+		<property name="dao"> <!-- name="setter method의 변수 이름" -->
+			<ref bean="memberDao"/>
+		</property>
+	</bean>
+	
+	<bean id="memberPwSvc" class="di.service.ChangePasswordService2">
+		<property name="dao" ref="memberDao"/>
+	</bean>
+</beans>
