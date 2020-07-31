@@ -2,9 +2,9 @@ package di.service;
 
 import java.util.Date;
 
-//import javax.annotation.Resource;
+import javax.annotation.Resource;
 
-import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import di.dao.Dao;
@@ -15,8 +15,8 @@ import di.exception.AlreadyExistingMemberException;
 @Component("memberregSvc")
 public class MemberRegisterService3 {
 	
-	@Autowired	// Type으로 처리함
-	// @Resource(name="memberDao")
+	// @Autowired	// Type으로 처리함
+	@Resource(name="dao")
 	private Dao dao;
 	
 	public void regist(RegisterRequest req) throws AlreadyExistingMemberException {

@@ -7,22 +7,20 @@ import di.dao.MemberDao;
 import di.service.ChangePasswordService;
 import di.service.MemberRegisterService;
 
-//@Configuration
+@Configuration
 public class JavaConfig {
-
-//	@Bean
+	
+	@Bean(name="dao")	// 메소드 이름으로 bean configuration 설정에 등록이 된다
 	public MemberDao memberDao() {
 		return new MemberDao();
 	}
-
-//	@Bean
+	
+	@Bean("regSvc")
 	public MemberRegisterService memberRegSvc() {
 		return new MemberRegisterService(memberDao());
 	}
-
-//	@Bean
-	public ChangePasswordService memberPwSvc() {
+	@Bean
+	public ChangePasswordService changePwSvc() {
 		return new ChangePasswordService(memberDao());
 	}
-
 }

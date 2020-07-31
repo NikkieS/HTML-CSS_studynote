@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 
 import di.domain.Member;
 
-@Component()
+@Component("dao")
 public class MemberDao implements Dao {
 	
 	private static long nextId = 0;
