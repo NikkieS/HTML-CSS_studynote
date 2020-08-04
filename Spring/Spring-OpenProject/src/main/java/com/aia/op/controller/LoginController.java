@@ -13,6 +13,7 @@ import com.aia.op.member.model.LoginRequest;
 import com.aia.op.member.service.MemberLoginService;
 
 @Controller
+@RequestMapping("/login/login")
 public class LoginController {
 	
 	@Autowired

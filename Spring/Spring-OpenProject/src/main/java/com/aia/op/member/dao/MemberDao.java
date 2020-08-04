@@ -8,8 +8,11 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.stereotype.Repository;
+
 import com.aia.op.member.model.Member;
 
+@Repository
 public class MemberDao {
 	
 	public int insertMember(Connection conn, Member member) throws SQLException {
@@ -41,6 +44,7 @@ public class MemberDao {
 		int resultCnt = 0;
 		ResultSet rs = null;
 		PreparedStatement pstmt = null;
+		
 		String sql = "select count(*) from project.member where uid=?";
 		
 		try {

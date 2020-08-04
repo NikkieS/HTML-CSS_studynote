@@ -13,7 +13,7 @@ import com.aia.op.member.dao.MemberDao;
 public class IdCheckService {
 
 	@Autowired
-	MemberDao dao;
+	private MemberDao dao;
 	
 	public String checkId(String uid) {
 		String result = "N";

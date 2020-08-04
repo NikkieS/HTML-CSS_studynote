@@ -12,6 +12,7 @@ import com.aia.op.member.model.MemberRegRequest;
 import com.aia.op.member.service.MemberRegService;
 
 @Controller
+@RequestMapping("/member/memberReg")
 public class MemberRegController {
 	
 	@Autowired

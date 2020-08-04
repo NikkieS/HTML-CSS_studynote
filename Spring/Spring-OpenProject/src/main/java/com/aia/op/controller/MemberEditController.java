@@ -13,6 +13,7 @@ import com.aia.op.member.model.MemberEditRequest;
 import com.aia.op.member.service.MemberEditService;
 
 @Controller
+@RequestMapping("/member/memberEdit")
 public class MemberEditController {
 
 	@Autowired
