@@ -110,3 +110,6 @@ div.paging>a.paging_num {
 a {
 	text-decoration: none;	
 }
+a:visited, a:link{
+	color: black;
+}
