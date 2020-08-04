@@ -36,8 +36,8 @@ public class DBCPInit extends HttpServlet {
 	private void initConnectionPool() {
 		
 		try {
-			String jdbcDriver = "jdbc:mysql://aia.cvypdnqeoamq.ap-northeast-2.rds.amazonaws.com:3306/project?autoReconnect=true&useUnicode=true&characterEncoding=utf-8&serverTimezone=UTC";
-
+			//String jdbcDriver = "jdbc:mysql://aia.cvypdnqeoamq.ap-northeast-2.rds.amazonaws.com:3306/project?autoReconnect=true&useUnicode=true&characterEncoding=utf-8&serverTimezone=UTC";
+			String jdbcDriver="jdbc:mysql://localhost:3306/project?autoReconnect=true&useUnicode=true&characterEncoding=utf-8&serverTimezone=UTC";
 			String username = "bit";
 			String pw = "bit";
 			
