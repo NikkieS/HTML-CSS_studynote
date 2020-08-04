@@ -14,35 +14,34 @@ import service.Service;
 public class MemberDelServiceImpl implements Service {
 	
 	MemberDao dao;
-	
+
 	@Override
 	public String getViewPage(HttpServletRequest request, HttpServletResponse response) {
 		int resultCnt = 0;
 		Connection conn = null;
 		String idx = request.getParameter("idx");
+		
 		try {
 			conn = ConnProvider.getConn();
 			dao = MemberDao.getInstance();
 			Member member = dao.selectMember(conn, idx);
 			
-			if(member == null) {
-				resultCnt = -1;
+			if(member==null) {
+				resultCnt=-1;
 			}
-			
 			resultCnt = dao.deleteMember(conn, idx);
 		} catch(SQLException e) {
 			e.printStackTrace();
 		} finally {
-			if(conn != null) {
+			if (conn != null) {
 				try {
 					conn.close();
 				} catch (SQLException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}
 		}
 		request.setAttribute("resultCode", resultCnt);
-		return "/WEB-INF/views/member/memberDel.jsp";
+		return null;
 	}
 }
