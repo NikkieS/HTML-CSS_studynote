@@ -8,6 +8,7 @@ import javax.sql.DataSource;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.test.context.ContextConfiguration;
@@ -21,6 +22,13 @@ public class JDBCTest {
 	private DataSource dataSource;
 	@Inject // 자동주입해주는 annotation : Java 제공
 	private JdbcTemplate template;
+	@Inject
+	private SqlSessionTemplate sessionTemplate;
+	
+	@Test
+	public void sqlTemplateTest() {
+		System.out.println("sqlSessionTemplate =======> " + sessionTemplate);
+	}
 	
 	@Test
 	public void jdbcTemplateTest() {

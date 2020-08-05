@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<h1 id="header"><a href="<c:url value="/index"/>">Open Project</a></h1>
+<h1 id="header"><a href="<c:url value="/"/>">Open Project</a></h1>
 <ul id="nav">
 	<li><a href="${pageContext.request.contextPath}/member/memberReg">회원가입</a></li>
 	

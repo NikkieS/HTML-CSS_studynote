@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- sql에 대한 설정 
+	 select update delete의 태그를 포함
+	 반환 타입 설정
+	 파라미터 설정
+	 변수 설정: #{} getter 메소드로 가져옴
+-->
+<mapper namespace="com.aia.op.mybatis.mapper.MemberMapper">
+	<insert id="insertMember" parameterType="com.aia.op.member.model.Member">	<!-- 사용할 파라미터를 설정: parameterType으로 객체를 불러와 준다 -->
+		insert into project.member (uid, upw, uname, uphoto) values (#{uid}, #{upw}, #{uname}, #{uphoto})
+	</insert>
+</mapper>

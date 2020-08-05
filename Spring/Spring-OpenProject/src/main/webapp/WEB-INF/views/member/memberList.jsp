@@ -7,7 +7,18 @@
 <meta charset="UTF-8">
 <title>Open Project</title>
 
-<link rel="stylesheet" href="<c:url value="/css/default.css" />">
+<link rel="stylesheet" href="<c:url value='/css/default.css'/>">
+
+<style>
+	td>img{
+		width: 50px;
+		height: 50px;
+	}
+	div.searchBox{
+		border: 1px solid #DDD;
+		padding: 20px; 
+	}
+</style>
 
 </head>
 <body>
@@ -21,6 +32,18 @@
 		<div>전체회원 ${listView.memberTotalCount}명</div>
 		<hr>
 		
+		<div class="searchBox">
+			<form> <!-- method=GET -->
+				<select name="searchType">
+					<option value="id">ID</option>
+					<option value="name">NAME</option>
+					<option value="both">BOTH</option>
+				</select>
+				<input type="text" name="keyword">
+				<input type="submit" value="검색">
+			</form>
+		</div>
+		
 		<table class="table">
 			<tr>
 				<th>No.</th>
@@ -32,6 +55,7 @@
 			</tr>
 			
 		<c:if test="${not empty listView.memberList}">
+		<c:url value="${initParam['memberUploadPath']}" var="imagePath"/>
 		<c:forEach items="${listView.memberList}" var="member">
 			<tr>
 				<td>${member.idx}</td>
@@ -44,7 +68,7 @@
 		</c:forEach>
 		</c:if>
 		
-		<c:if test="${empty listView}">
+		<c:if test="${empty listView.memberList}">
 			<tr>
 				<th colspan="6">조회된 회원이 없습니다.</th>
 			</tr>
@@ -53,7 +77,7 @@
 		
 		<div class="paging">
 			<c:forEach begin="1" end="${listView.pageTotalCount}" var="i">
-				<a class="paging_num ${i == listView.currentPageNumber? 'now_page':'' }" href="memberList?page=${i}">${i}</a>
+				<a class="paging_num ${i == listView.currentPage? 'now_page':'' }" href="memberList?page=${i}">${i}</a>
 			</c:forEach>
 		</div>
 		
@@ -63,6 +87,7 @@
 	<%@ include file="/WEB-INF/views/include/footer.jsp" %>
 </body>
 </html>
+
 <script>
 	function memberDel(idx){
 		if(confirm('선택하신 회원 정보를 삭제하시겠습니까?')){

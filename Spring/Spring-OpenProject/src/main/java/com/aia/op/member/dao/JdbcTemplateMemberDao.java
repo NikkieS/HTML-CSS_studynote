@@ -7,7 +7,9 @@ import javax.inject.Inject;
 
 import com.aia.op.member.model.Member;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public class JdbcTemplateMemberDao {
 	
 	@Inject
@@ -25,7 +27,7 @@ public class JdbcTemplateMemberDao {
 		return jdbcTemplate.queryForObject("select count(*) from project.member", Integer.class);
 	}
 	
-	public List<Member> selectList(int startRow, int countperpage) throws SQLException{
+	public List<Member> selectList(int startRow, int count) throws SQLException{
 		
 //		List<Member> list = new ArrayList<Member>();
 //		String sql = "select * from project.member order by uname limit ?, ?";
@@ -35,6 +37,6 @@ public class JdbcTemplateMemberDao {
 //		
 //		return list;
 		
-		return jdbcTemplate.query("select * from project.member order by uname limit ?, ?", new Object[] {startRow, countperpage}, new MemberRowMapper());
+		return jdbcTemplate.query("select * from project.member order by uname limit ?, ?", new Object[] {startRow, count}, new MemberRowMapper());
 	}
 }

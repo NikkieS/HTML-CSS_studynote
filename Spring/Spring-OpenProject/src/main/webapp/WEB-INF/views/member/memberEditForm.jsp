@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <title>Open Project</title>
 
-<link rel="stylesheet" href="<c:url value="/css/default.css" />">
+<link rel="stylesheet" href="<c:url value='/css/default.css'/>">
 
 </head>
 <body>

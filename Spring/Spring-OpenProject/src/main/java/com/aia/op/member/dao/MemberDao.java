@@ -123,9 +123,9 @@ public class MemberDao {
 			if(pstmt != null) {
 				pstmt.close();
 			}
-			if(conn != null) {
-				conn.close();
-			}
+//			if(conn != null) {
+//				conn.close();
+//			}
 		}
 		
 		return list;

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 자동으로 만들어지는 mapper 객체
+	select id는 메소드 이름으로 일치시켜준다
+-->
+<mapper namespace="com.aia.op.member.dao.MemberDaoInterface">
+	
+	<!-- select의 결과를 객체에 mapping해준다 : 테이블에 column명과 java beans의 변수의 이름이 다른 경우 -->
+	<resultMap type="com.aia.op.member.model.Member" id="resultMember">
+		<id property="idx" column="idx"/>	<!-- 테이블의 idx를 Member객체 idx변수에 setIdx 실행 -->
+		<id property="uid" column="uid"/>
+		<id property="upw" column="upw"/>
+		<id property="uname" column="uname"/>
+		<id property="uphoto" column="uphoto"/>
+	</resultMap>
+	
+	
+	<select id="selectByIdPw" resultType="com.aia.op.member.model.Member">
+		select * from project.member where uid=#{param1} and upw=#{param2}
+	</select>
+
+<!-- 검색: id, name, id or name 
+	 map.put("searchType", "id"/"name"/"both") 으로 넣기
+	 map.put("keyword", uid)
+	 startRow count searchType keyword)
+ -->
+ 
+ <!-- map - HashMap -->
+	<select id="totalCount" parameterType="map" resultType="int">
+		select count(*) from project.member
+		<where> <!-- 첫 or문은 자동 생략해 줌 -->
+			<if test="searchType != null">
+				<if test="searchType == 'both'">
+					<include refid="whereID"/>
+					<include refid="whereName"/>
+				</if>
+				<if test="searchType == 'id'">
+					<include refid="whereID"/>
+				</if>
+				<if test="searchType == 'name'">
+					<include refid="whereName"/>
+				</if>
+			</if>
+		</where>
+	
+	</select>
+	
+	<select id="selectList" parameterType="map" resultMap="resultMember">
+		select * from project.member
+		<include refid="listSearch"/>
+		limit #{startRow}, #{count}
+	</select>
+	
+	<insert id="insertMember" parameterType="com.aia.op.member.model.Member" 
+			useGeneratedKeys="true"	
+			keyProperty="idx">	<!-- 사용할 파라미터를 설정: parameterType으로 객체를 불러와 준다 -->
+		insert into project.member (uid, upw, uname, uphoto) values (#{uid}, #{upw}, #{uname}, #{uphoto})
+	</insert>
+	
+	<!-- sql: where -->
+	<sql id="whereID">
+		or uid like concat('%',#{keyword},'%')
+	</sql>
+	<sql id="whereName">
+		or uname like concat('%',#{keyword},'%')
+	</sql>
+	
+	<sql id="listSearch">
+		<where> <!-- 첫 or문은 자동 생략해 줌 -->
+			<if test="searchType != null">
+				<if test="searchType == 'both'">
+					<include refid="whereID"/>
+					<include refid="whereName"/>
+				</if>
+				<if test="searchType == 'id'">
+					<include refid="whereID"/>
+				</if>
+				<if test="searchType == 'name'">
+					<include refid="whereName"/>
+				</if>
+			</if>
+		</where>
+	</sql>
+</mapper>

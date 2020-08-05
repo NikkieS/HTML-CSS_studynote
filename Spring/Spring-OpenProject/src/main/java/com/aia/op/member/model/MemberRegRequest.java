@@ -7,6 +7,7 @@ public class MemberRegRequest {
 	private String upw;
 	private String uname;
 	private MultipartFile photo;
+	
 	public String getUid() {
 		return uid;
 	}

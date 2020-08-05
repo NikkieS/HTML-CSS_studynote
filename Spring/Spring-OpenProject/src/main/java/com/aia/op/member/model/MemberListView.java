@@ -52,5 +52,12 @@ public class MemberListView {
 	public int getPageTotalCount() {
 		return pageTotalCount;
 	}
-
+	
+	@Override
+	public String toString() {
+		return "MemberListView [memberTotalCount=" + memberTotalCount + ", currentPage=" + currentPage + ", memberList="
+				+ memberList + ", countPerPage=" + countPerPage + ", startRow=" + startRow + ", pageTotalCount="
+				+ pageTotalCount + "]";
+	}
+	
 }

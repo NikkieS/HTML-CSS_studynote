@@ -7,7 +7,9 @@
 <meta charset="UTF-8">
 <title>Open Project</title>
 
-<link rel="stylesheet" href="<%= request.getContextPath() %>/css/default.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+
+<link rel="stylesheet" href="<c:url value='/css/default.css'/>">
 
 </head>
 <body>
@@ -17,8 +19,8 @@
 	<div>
 		<h1 id=header>회원 가입</h1>
 		<hr>
-		<form method="post" enctype="multipart/form-data">
-			<table>
+		<form id="regForm" method="post" enctype="multipart/form-data">
+			<table class="table">
 				<tr>
 					<td>아이디(email)</td>
 					<td>
@@ -37,7 +39,7 @@
 				</tr>
 				<tr>
 					<td>사진</td>
-					<td><input type="file" name="uphoto"></td>
+					<td><input type="file" name="photo"></td>
 				</tr>
 				<tr>
 					<td></td>
@@ -56,6 +58,7 @@
 </html>
 <script>
 	$(document).ready(function(){
+		
 		$("#regForm").submit(function(){
 			if(!($("#idchk").prop('checked'))){
 				alert('아이디 중복 체크는 필수 항목입니다.');
@@ -63,6 +66,7 @@
 				return false;
 			};
 		});
+		
 		$("#uid").focusin(function(){
 			$(this).val('');
 			$("#idchk").prop('checked', false);
@@ -72,6 +76,7 @@
 			$("#checkmsg").removeClass("check_ok");
 			$("#checkmsg").removeClass('check_not');
 		});
+		
 		$("#uid").focusout(function(){
 			if($(this).val().length<1){
 				$("#checkmsg").text("아이디는 필수 항목입니다.");
@@ -79,9 +84,10 @@
 
 				return false;
 			}
+			
 			// 비동기 통신
 			$.ajax({
-				url: 'idCheck.do',
+				url: 'idCheck',
 				data: {uid: $(this).val()},
 				success: function(data){
 					if(data == 'Y'){
@@ -97,6 +103,8 @@
 					}
 				}
 			});
+			
 		});
+		
 	});
 </script>
