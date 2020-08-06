@@ -22,29 +22,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from project.member where uid=#{param1} and upw=#{param2}
 	</select>
 
-<!-- 검색: id, name, id or name 
-	 map.put("searchType", "id"/"name"/"both") 으로 넣기
-	 map.put("keyword", uid)
-	 startRow count searchType keyword)
- -->
+	<!-- 검색: id, name, id or name 
+		 map.put("searchType", "id"/"name"/"both") 으로 넣기
+		 map.put("keyword", uid)
+	 -->
  
- <!-- map - HashMap -->
+ 	<!-- map - HashMap -->
 	<select id="totalCount" parameterType="map" resultType="int">
 		select count(*) from project.member
-		<where> <!-- 첫 or문은 자동 생략해 줌 -->
-			<if test="searchType != null">
-				<if test="searchType == 'both'">
-					<include refid="whereID"/>
-					<include refid="whereName"/>
-				</if>
-				<if test="searchType == 'id'">
-					<include refid="whereID"/>
-				</if>
-				<if test="searchType == 'name'">
-					<include refid="whereName"/>
-				</if>
-			</if>
-		</where>
+		<!-- <![CDATA[idx<10 and idx>1]]> -->
+		<include refid="listSearch"/>
 	
 	</select>
 	
@@ -54,11 +41,33 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		limit #{startRow}, #{count}
 	</select>
 	
+	<select id="selectByIdx" resultType="com.aia.op.member.model.Member">
+		select * from project.member where idx=#{idx}	<!-- parameter가 하나일때 param 이름은 아무거나 정해줘도 된다 -->
+	</select>
+	
+	<select id="selectListXml" resultType="com.aia.op.member.model.MemberXml">
+		select * from project.member order by idx desc
+	</select>
+	
+	<select id="selectListJson" resultMap="resultMember">
+		select * from project.member order by idx desc
+	</select>
+	
+	
 	<insert id="insertMember" parameterType="com.aia.op.member.model.Member" 
 			useGeneratedKeys="true"	
 			keyProperty="idx">	<!-- 사용할 파라미터를 설정: parameterType으로 객체를 불러와 준다 -->
 		insert into project.member (uid, upw, uname, uphoto) values (#{uid}, #{upw}, #{uname}, #{uphoto})
 	</insert>
+	
+	<delete id="memberDelete" parameterType="int">
+		delete from project.member where idx=#{idx}
+	</delete>
+	
+	<!--
+	 	<![CDATA[idx<10 and idx>1]]>
+		엘리먼트 <>를 엘리먼트의 시작과 끝으로 인식하지 않도록 처리
+	-->
 	
 	<!-- sql: where -->
 	<sql id="whereID">
@@ -67,7 +76,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<sql id="whereName">
 		or uname like concat('%',#{keyword},'%')
 	</sql>
-	
+	<!-- sql: listSearch -->
 	<sql id="listSearch">
 		<where> <!-- 첫 or문은 자동 생략해 줌 -->
 			<if test="searchType != null">

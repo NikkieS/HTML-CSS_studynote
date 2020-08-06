@@ -63,7 +63,7 @@
 				<td>${member.upw}</td>
 				<td>${member.uname}</td>
 				<td><img alt="img" src="${imagePath}/${member.uphoto}"></td>
-				<td><a href="memberEdit?idx=${member.idx}">수정</a> | <a href="javascript:memberDel(${member.idx})">삭제</a></td>
+				<td><a href="memberEdit?idx=${member.idx}">수정</a> | <a href="javascript:memberDel(${member.idx})">삭제</a> | <a href="view/${member.idx}">정보보기</a></td>
 			</tr>
 		</c:forEach>
 		</c:if>

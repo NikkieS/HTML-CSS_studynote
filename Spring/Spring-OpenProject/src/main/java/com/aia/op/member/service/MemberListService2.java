@@ -76,7 +76,6 @@ public class MemberListService2 {
 		// 전체 회원수가 0보다 많으면
 		if(totalCnt > 0) {
 			startRow = (currentPage-1)*MEMBER_CNT_PER_PAGE;
-			System.out.println("startRow = "+startRow);
 			
 			search.put("startRow", startRow);
 			search.put("count", MEMBER_CNT_PER_PAGE);
