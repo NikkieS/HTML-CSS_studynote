@@ -20,7 +20,7 @@ import com.aia.op.member.service.MemberListService2;
 import com.aia.op.member.service.MemberListXmlService;
 
 @Controller
-public class MemberListcontroller {
+public class MemberListController {
 
 	@Autowired
 	MemberListService2 listService;
