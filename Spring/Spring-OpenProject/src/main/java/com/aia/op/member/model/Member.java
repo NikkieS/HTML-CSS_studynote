@@ -65,6 +65,10 @@ public class Member {
 	public void setRegdate(Date regdate) {
 		this.regdate = regdate;
 	}
+	
+	public LoginInfo toLoginInfo() {
+		return new LoginInfo(uid, uname, uphoto);
+	}
 
 	@Override
 	public String toString() {
