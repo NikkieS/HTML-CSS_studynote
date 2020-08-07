@@ -6,7 +6,7 @@ public class MemberRegRequest {
 	private String uid;
 	private String upw;
 	private String uname;
-	private MultipartFile photo;
+	private MultipartFile uphoto;
 	
 	public String getUid() {
 		return uid;
@@ -26,11 +26,11 @@ public class MemberRegRequest {
 	public void setUname(String uname) {
 		this.uname = uname;
 	}
-	public MultipartFile getPhoto() {
-		return photo;
+	public MultipartFile getUphoto() {
+		return uphoto;
 	}
-	public void setPhoto(MultipartFile photo) {
-		this.photo = photo;
+	public void setUphoto(MultipartFile uphoto) {
+		this.uphoto = uphoto;
 	}
 	
 	// MemberRegRequest -> Member
@@ -40,7 +40,7 @@ public class MemberRegRequest {
 	
 	@Override
 	public String toString() {
-		return "MemberRegRequest [uid=" + uid + ", upw=" + upw + ", uname=" + uname + ", photo=" + photo + "]";
+		return "MemberRegRequest [uid=" + uid + ", upw=" + upw + ", uname=" + uname + ", uphoto=" + uphoto + "]";
 	}
 	
 }

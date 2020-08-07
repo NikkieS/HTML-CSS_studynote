@@ -7,7 +7,25 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.aia.mm.dao.MemberDao">
 
 	<select id="selectList" resultType="com.aia.mm.model.Member">
-		select * from porject.member order by uname
+		select * from project.member order by regdate desc
 	</select>
+	
+	<select id="selectByIdx" resultType="com.aia.mm.model.Member">
+		select * from project.member where idx=#{idx}
+	</select>
+	
+	<update id="editMember" parameterType="com.aia.mm.model.Member">
+		update project.member set upw=#{upw}, uname=#{uname}, uphoto=#{uphoto} where idx=#{idx}
+	</update>
+	
+	<insert id="insertMember" parameterType="com.aia.mm.model.Member"
+			useGeneratedKeys="true"
+			keyProperty="idx">
+		insert into project.member (uid, upw, uname, uphoto) values (#{uid}, #{upw}, #{uname}, #{uphoto})
+	</insert>
+	
+	<delete id="deleteMember">
+		delete from project.member where idx=#{idx}
+	</delete>
 	
 </mapper>

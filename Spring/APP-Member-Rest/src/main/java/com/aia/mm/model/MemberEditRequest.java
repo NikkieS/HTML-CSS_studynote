@@ -10,6 +10,7 @@ public class MemberEditRequest {
 	private String uname;
 	private MultipartFile photo;
 	private String oldFile;
+	
 	public int getIdx() {
 		return idx;
 	}
@@ -51,6 +52,7 @@ public class MemberEditRequest {
 	public Member toMember() {
 		return new Member(idx, uid, upw, uname, oldFile.length()>0? oldFile:null, null);
 	}
+	
 	@Override
 	public String toString() {
 		return "MemberEditRequest [idx=" + idx + ", uid=" + uid + ", upw=" + upw + ", uname=" + uname + ", photo="

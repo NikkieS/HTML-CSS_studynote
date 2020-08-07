@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+
+<style>
+	
+	#memberList{
+		overflow: hidden;
+	}
+	div.card{
+		width: 33%;
+		float: left;
+		
+		border: 1px solid #DDD;
+	}
+	div.card>ul>li{
+		list-style: none;
+		
+		font-size: 12px;
+	}
+</style>
+</head>
+<body>
+	<h1>회원수정</h1>
+	
+	<form id="editForm" onsubmit="return false;">
+		Idx <input id="idx" type="text" name="idx" readonly><br>
+		아이디 <input id="euid" type="text" name="uid" readonly><br>
+		비밀번호 <input id="eupw" type="text" name="upw"><br>
+		이름 <input id="euname" type="text" name="uname"><br>
+		사진 <input id="ephoto" type="file" name="photo"><br>
+		현재사진 <input id="oldfile" type="text" name="oldfile"><br>
+		<input type="submit" value="수정완료" onclick="editSubmit();"><br>
+	</form>
+	<hr>
+	
+	<h1>회원가입</h1> <input type="button">
+	
+	<form id="regForm" onsubmit="return false;">
+		아이디 <input id="uid" type="text" name="uid"><br>
+		비밀번호 <input id="upw" type="text" name="upw"><br>
+		이름 <input id="uname" type="text" name="uname"><br>
+		사진 <input id="photo" type="file" name="photo"><br>
+		<input type="submit" value="회원가입" onclick="regSubmit();"><br>
+	</form>
+	<hr>
+	
+	<h1>회원 리스트</h1>
+	<div id="memberList"></div>
+</body>
+</html>
+<script>
+	$(document).ready(function(){
+		
+		memberList();
+		
+		
+	});
+	
+	function memberList(){
+		$.ajax({
+			url: "http://localhost:8080/mm/members",
+			type: "GET",
+			success: function(data){
+				//alert(JSON.stringify(data));
+				
+				var html = '';
+				
+				for (var i=0; i<data.length; i++){
+					html += '<div class="card">';
+					html += '	<ul>';
+					html += '		<li>idx : '+data[i].idx+'</li>';
+					html += '		<li>uid : '+data[i].uid+'</li>';
+					html += '		<li>upw : '+data[i].upw+'</li>';
+					html += '		<li>uname : '+data[i].uname+'</li>';
+					html += '		<li>uphoto : '+data[i].uphoto+'</li>';
+					html += '		<li><input type="button" value="수정" onclick="editForm('+data[i].idx+');">';
+					html += '		<input type="button" value="삭제" id="delete" onclick="del('+data[i].idx+')">'+'</li>';
+					html += '	</ul>';
+					html += '</div>';
+				}
+				
+				$('#memberList').html(html);
+			}
+		})
+	};
+	
+	function regSubmit(){
+		
+		// FromData: JavaScript에서 제공
+		var regFormData = new FormData();
+		regFormData.append('uid', $("#uid").val());
+		regFormData.append('upw', $("#upw").val());
+		regFormData.append('uname', $("#uname").val());
+		
+		// 파일 첨부
+		if($("#photo")[0].files[0] != null){
+			regFormData.append('uphoto', $("#photo")[0].files[0]);
+		}
+		
+		$.ajax({
+			url: "http://localhost:8080/mm/members",
+			type: "POST",
+			processData: false,	// File 전송시 필수
+			contentType: false,	// multipart/form-data 설정과 동일
+			data:regFormData,
+			success: function(data){
+				//alert(data);
+				memberList();
+				document.getElementById("regForm").reset();
+			}
+		})
+	};
+	
+	function editForm(idx){
+		
+		// FromData: JavaScript에서 제공
+		var regFormData = new FormData();
+		regFormData.append('uid', $("#uid").val());
+		regFormData.append('upw', $("#upw").val());
+		regFormData.append('uname', $("#uname").val());
+		
+		$.ajax({
+			url: "http://localhost:8080/mm/members/" + idx,
+			type: "GET",
+			success: function(data){
+				$("#idx").val(data.idx);
+				$("#euid").val(data.uid);
+				$("#euname").val(data.uname);
+				$("#oldfile").val(data.uphoto);
+			}
+		})
+	};
+	
+	function editSubmit(){
+		
+		// FromData: JavaScript에서 제공
+		var editFormData = new FormData();
+		editFormData.append('uid', $("#euid").val());
+		editFormData.append('upw', $("#eupw").val());
+		editFormData.append('uname', $("#euname").val());
+		editFormData.append('oldFile', $("#oldfile").val());
+		
+		// 파일 첨부
+		if($("#ephoto")[0].files[0] != null){
+			editFormData.append('photo', $("#ephoto")[0].files[0]);
+		}
+		
+		$.ajax({
+			url: "http://localhost:8080/mm/members/"+$("#idx").val(),
+			type: "POST",
+			processData: false,	// File 전송시 필수
+			contentType: false,	// multipart/form-data 설정과 동일
+			data: editFormData,
+			success: function(data){
+				//alert(data);
+				memberList();
+				document.getElementById("editForm").reset();
+			}
+		})
+	};
+	
+	function del(idx){
+		
+		if(confirm("정말 삭제하시겠습니까?")){
+			$.ajax({
+				url: "http://localhost:8080/mm/members/" + idx,
+				type: "DELETE",
+				success: function(data){
+					memberList();
+				}
+			})
+		}
+	};
+</script>
