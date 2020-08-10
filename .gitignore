@@ -4,8 +4,8 @@
 # Server Path
 Servers/
 
-
-
+### Maven ###
+pom.properties
 
 ### Eclipse ###
 .metadata
