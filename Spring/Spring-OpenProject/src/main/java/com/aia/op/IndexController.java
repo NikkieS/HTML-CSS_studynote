@@ -14,8 +14,8 @@ public class IndexController {
 	
 	@RequestMapping("/")
 	public String index() {
-		String str = null;
-		str.toString();
+//		String str = null;
+//		str.toString();
 		
 		return "index";
 	}
