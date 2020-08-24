@@ -104,3 +104,17 @@ hs_err_pid*
 # End of https://www.gitignore.io/api/java,eclipse
 *.exe
 *.properties
+Spring/APP-Member-Rest/target/m2e-wtp/web-resources/META-INF/maven/com.aia/mm/pom.properties
+Spring/APP-Member-Rest/target/m2e-wtp/web-resources/META-INF/maven/com.aia/mm/pom.properties
+Spring/APP-Member-Rest/target/m2e-wtp/web-resources/META-INF/maven/com.aia/mm/pom.properties
+Spring/APP-Member-Rest/target/m2e-wtp/web-resources/META-INF/maven/com.aia/mm/pom.properties
+Spring/APP-Member-Rest/target/m2e-wtp/web-resources/META-INF/maven/com.aia/mm/pom.properties
+Spring/Encrypt/target/classes/log4j.xml
+Spring/Encrypt/src/test/resources/log4j.xml
+Spring/Encrypt/target/m2e-wtp/web-resources/META-INF/MANIFEST.MF
+Spring/Encrypt/target/test-classes/log4j.xml
+Spring/Spring-MVC/target/m2e-wtp/web-resources/META-INF/maven/com.aia/mvc/pom.properties
+Spring/Spring-OpenProject/target/m2e-wtp/web-resources/META-INF/maven/com.aia/op/pom.properties
+Spring/Spring-OpenProject/target/m2e-wtp/web-resources/META-INF/maven/com.aia/op/pom.xml
+Spring/Spring-RestTest/target/m2e-wtp/web-resources/META-INF/maven/com.aia/rest/pom.properties
+Spring/TestApp/target/m2e-wtp/web-resources/META-INF/maven/com.test/app/pom.properties

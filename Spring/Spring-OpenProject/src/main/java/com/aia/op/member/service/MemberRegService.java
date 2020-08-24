@@ -32,6 +32,10 @@ public class MemberRegService {
 	@Autowired
 	private SqlSessionTemplate sessionTemplate;
 	
+	// 2020.08.11 추가
+	@Autowired
+	private MailSenderService mailService;
+	
 	public int memberReg(MemberRegRequest regRequest, HttpServletRequest request) {
 		
 		dao = sessionTemplate.getMapper(MemberDaoInterface.class);
@@ -77,6 +81,10 @@ public class MemberRegService {
 			// resultCnt = dao.insertMember(conn, member);
 			resultCnt = dao.insertMember(member);
 			System.out.println("입력 전 IDX ===> " + member.getIdx());
+			
+			// 2020.08.11 추가
+			mailService.send(member.getUid(), member.getCode());
+			
 		} catch (IllegalStateException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
