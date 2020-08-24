@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>Spring Boot에서 JSP를 View로 사용</h1>
+	<h1> Spring Boot을 사용한 JSP파일 접속</h1>
 </body>
 </html>

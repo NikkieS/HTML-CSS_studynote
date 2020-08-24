@@ -118,3 +118,5 @@ Spring/Spring-OpenProject/target/m2e-wtp/web-resources/META-INF/maven/com.aia/op
 Spring/Spring-OpenProject/target/m2e-wtp/web-resources/META-INF/maven/com.aia/op/pom.xml
 Spring/Spring-RestTest/target/m2e-wtp/web-resources/META-INF/maven/com.aia/rest/pom.properties
 Spring/TestApp/target/m2e-wtp/web-resources/META-INF/maven/com.test/app/pom.properties
+Spring/TestJavaProject/target/classes/META-INF/maven/TestJavaProject/TestJavaProject/pom.properties
+Spring/SpringDI/target/classes/META-INF/maven/SpringDI/SpringDI/pom.properties

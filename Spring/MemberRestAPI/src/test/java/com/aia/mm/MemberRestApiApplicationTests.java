@@ -14,7 +14,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-class MemberRestApiApplicationTests {
+public class MemberRestApiApplicationTests {
 	
 	@Autowired
 	private DataSource dataSource;
@@ -35,7 +35,6 @@ class MemberRestApiApplicationTests {
 	
 	@Test
 	public void testSqlSessionFactory() {
-		System.out.println("check SessionFactory : "+sessionFactory);
+		System.out.println("check SessionFactory : " + sessionFactory);
 	}
-
 }
