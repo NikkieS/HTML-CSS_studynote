@@ -90,16 +90,16 @@ public class ThreadMain {
 //		
 //		cal.showOpCnt();
 		
-		TwoNum tn = new TwoNum();
+		TwoNum tn = new TwoNum();	// TwoNum이라는 객체를 생성한다.
 		
-		AccessThread at5 = new AccessThread(tn);
-		AccessThread at6 = new AccessThread(tn);
+		AccessThread at5 = new AccessThread(tn);	// Thread객체에 TwoNum객체를 할당하여 준다.
+		AccessThread at6 = new AccessThread(tn);	// 위와 동일한 TwoNum을 할당하여준다 -> 공유한다
 		
-		at5.start();
+		at5.start();	// start(): begin execution
 		at6.start();
 		
 		try {
-			at5.join();
+			at5.join();	// join(): wait until this thread to die
 			at6.join();
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
