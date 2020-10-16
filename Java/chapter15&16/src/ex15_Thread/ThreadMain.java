@@ -102,7 +102,6 @@ public class ThreadMain {
 			at5.join();	// join(): wait until this thread to die
 			at6.join();
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		

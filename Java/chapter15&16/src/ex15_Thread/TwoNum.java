@@ -4,7 +4,13 @@ public class TwoNum {
 	int num1=0;
 	int num2=0;
 	
+	/* 동기화 방법 
+	 * 1. 메소드의 동기화 방법
+	 * 2. 특정 블록의 동기화 방법 -> synchronized(동기화할 객체 또는 클래스명)
+	 */	
+	
 	void addOneNum1() {
+		// this : 클래스명
 		synchronized(this) {
 			num1 += 1;
 		}
@@ -17,6 +23,7 @@ public class TwoNum {
 	}
 	
 	void addOneNum2() {
+		// 임의의 참조변수
 		synchronized(key1) {
 			num2 += 1;
 		}
